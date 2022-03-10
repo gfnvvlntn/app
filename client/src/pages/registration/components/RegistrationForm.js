@@ -17,7 +17,7 @@ const RegistrationForm = ({onRegistration}) => {
 
     const onSubmit = useCallback(() => {
         onRegistration({email, password})
-    },[email, password])
+    },[onRegistration, email, password])
 
     return (
         <Container>

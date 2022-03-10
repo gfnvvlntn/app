@@ -1,14 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import RegistrationForm from "./components/RegistrationForm";
-import useHttp from "../../hooks/use-http";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
 const Registration = () => {
-    const{ apiClient } = useHttp()
 
-    const onRegistration = async (value) => {
-        await apiClient('/api/registration', 'POST', value)
-            .then(response => response.json())
-            .then(res => console.log(res))
+    const {store} = useContext(Context)
+
+    const onRegistration = (value) => {
+        store.registration(value.email, value.password)
     }
 
     return (
@@ -18,4 +18,4 @@ const Registration = () => {
 
 Registration.displayName = 'Registration'
 
-export default Registration
+export default observer(Registration)
