@@ -1,9 +1,10 @@
 import React, {useCallback, useState} from "react";
 import styled from "styled-components";
-import Input from "../../../components/base/input/Input";
-import Button, {ButtonVariant} from "../../../components/base/button/Button";
+import Input from "../components/base/input/Input";
+import Button, {ButtonVariant} from "../components/base/button/Button";
 
-const RegistrationForm = ({onRegistration}) => {
+
+const AuthForm = ({onSubmit, actionName}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -15,9 +16,9 @@ const RegistrationForm = ({onRegistration}) => {
         setPassword( e.target.value)
     }
 
-    const onSubmit = useCallback(() => {
-        onRegistration({email, password})
-    },[onRegistration, email, password])
+    const onSubmitForm = useCallback(() => {
+        onSubmit({email, password})
+    },[onSubmit, email, password])
 
     return (
         <Container>
@@ -33,10 +34,10 @@ const RegistrationForm = ({onRegistration}) => {
                     placeholder={'Password'}
                 />
                 <Button
-                    onClick={onSubmit}
+                    onClick={onSubmitForm}
                     variant={ButtonVariant.PRIMARY}
                 >
-                    registration
+                    {actionName}
                 </Button>
             </Content>
 
@@ -44,9 +45,9 @@ const RegistrationForm = ({onRegistration}) => {
     )
 }
 
-RegistrationForm.displayName = 'RegistrationForm'
+AuthForm.displayName = 'AuthForm'
 
-export default RegistrationForm
+export default AuthForm
 
 const Container = styled('div')`
   width: 600px;

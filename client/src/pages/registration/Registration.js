@@ -1,18 +1,26 @@
 import React, {useContext} from "react";
-import RegistrationForm from "./components/RegistrationForm";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
+import AuthForm from "../../form/AuthForm";
+import {Link} from "react-router-dom";
 
 const Registration = () => {
 
     const {store} = useContext(Context)
 
-    const onRegistration = (value) => {
+    const onSubmit = (value) => {
         store.registration(value.email, value.password)
     }
 
     return (
-       <RegistrationForm onRegistration={onRegistration}/>
+        <>
+            <AuthForm
+                onSubmit={onSubmit}
+                actionName={'REGISTRATION'}
+            />
+            <Link to={'/'}>Войти</Link>
+        </>
+
     )
 }
 

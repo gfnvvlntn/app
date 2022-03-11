@@ -1,7 +1,8 @@
-import Registration from "./pages/registration/Registration";
 import {useContext, useEffect} from "react";
 import {Context} from "./index";
 import {observer} from "mobx-react-lite";
+import {BrowserRouter} from "react-router-dom";
+import Routers from "./routers/Routers";
 
 function App() {
 
@@ -14,10 +15,9 @@ function App() {
   },[])
 
   return (
-      <>
-        <h1>{store.isAuth ? `Пользователь авторизован ${store.user.email}` : `Авторизуйтесь`}</h1>
-        <Registration />
-      </>
+      <BrowserRouter>
+        <Routers />
+      </BrowserRouter>
   );
 }
 
