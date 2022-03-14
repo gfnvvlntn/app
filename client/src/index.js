@@ -1,22 +1,21 @@
-import React, {createContext} from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import Store from "./store/store";
+import React, { createContext } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import AuthStore from "./store/authStore";
 
-const store = new Store()
+const authStore = new AuthStore();
 
 export const Context = createContext({
-    store
-})
+  authStore,
+});
 
 ReactDOM.render(
-    <Context.Provider value={{store}}>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    </Context.Provider>,
+  <Context.Provider value={{ authStore }}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Context.Provider>,
 
-  document.getElementById('root')
+  document.getElementById("root")
 );
-

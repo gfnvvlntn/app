@@ -1,84 +1,76 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ButtonVariant = {
-    PRIMARY: 'PRIMARY',
-    SECONDARY: 'SECONDARY'
-}
+  PRIMARY: "PRIMARY",
+  SECONDARY: "SECONDARY",
+};
 
-const getBaseStyle = () => {
-    return css`
-      width: 100%;
-      color: white;
-      font-size: 16px;
-      font-weight: 500;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      border: 1px solid white;
-    `
-}
+const getBaseStyle = ({ theme }) => {
+  return css`
+    width: 100%;
+    color: ${theme.font.color};
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid ${theme.color.border};
+  `;
+};
 
-const getVariantStyle = ({variant}) => {
-    switch (variant) {
-        case ButtonVariant.PRIMARY: {
-            return css`
-              color: white;
-              background-color: #575C7C;
-              &:hover {
-                color: #575C7C;
-                background-color: white;
-                border: 1px solid #575C7C;
-              }
-              &:active {
-                color: #575C7C;
-                background-color: white;
-                border: 1px solid #575C7C;
-              }
-              
-              &[disabled] {
-                opacity: 0.7;
-              }
-            `
+const getVariantStyle = ({ theme, variant }) => {
+  switch (variant) {
+    case ButtonVariant.PRIMARY: {
+      return css`
+        color: ${theme.font.color};
+        background-color: ${theme.color.main};
+        &:hover {
+          color: ${theme.color.main};
+          background-color: ${theme.font.color};
+          border: 1px solid ${theme.color.main};
         }
-        case ButtonVariant.SECONDARY: {
-            return css`
-              color: white;
-              background-color: #598C82;
-              &:hover {
-                color: #598C82;
-                background-color: white;
-                border: 1px solid #598C82;
-              }
-              &:active {
-                color: #598C82;
-                background-color: white;
-                border: 1px solid #598C82;
-              }
-              
-              &[disabled] {
-                opacity: 0.7;
-              }
-            `
+        &:active {
+          color: ${theme.color.main};
+          background-color: ${theme.font.color};
+          border: 1px solid ${theme.color.main};
         }
-        default:
-            return ''
 
+        &[disabled] {
+          opacity: 0.7;
+        }
+      `;
     }
-}
+    case ButtonVariant.SECONDARY: {
+      return css`
+        color: ${theme.font.color};
+        background-color: ${theme.color.third};
+        &:hover {
+          color: #${theme.color.third};
+          background-color: ${theme.font.color};
+          border: 1px solid ${theme.color.third};
+        }
+        &:active {
+          color: ${theme.color.third};
+          background-color: ${theme.font.color};
+          border: 1px solid ${theme.color.third};
+        }
 
+        &[disabled] {
+          opacity: 0.7;
+        }
+      `;
+    }
+    default:
+      return "";
+  }
+};
 
-const BaseButton = styled('button')(getBaseStyle)
-
+const BaseButton = styled("button")(getBaseStyle);
 
 const Button = styled(BaseButton).withConfig({
-    shouldForwardProp: (prop) => !['loading','isFullWidth'].includes(prop),
-})(getVariantStyle)
+  shouldForwardProp: (prop) => !["loading", "isFullWidth"].includes(prop),
+})(getVariantStyle);
 
+Button.displayName = "Button";
 
-Button.displayName = 'Button'
-
-export default Button
-
-
-
-
+export default Button;

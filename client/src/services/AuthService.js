@@ -1,8 +1,8 @@
-import api from "../hooks/use-http";
+import api from "../hooks/use-api";
 
 export default class AuthService {
     static async login(email, password) {
-        return api.post('/login', {email, password})
+        return  api.post('/login', {email, password})
     }
 
     static async logout() {

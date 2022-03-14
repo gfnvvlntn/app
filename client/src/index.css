@@ -1,7 +1,31 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto1/Roboto-Regular.eot');
+  src: local('☺'), url('assets/fonts/Roboto1/Roboto-Regular.woff') format('woff'), url('assets/fonts/Roboto1/Roboto-Regular.ttf') format('truetype'), url('assets/fonts/Roboto1/Roboto-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Medium.eot');
+  src: local('☺'), url('assets/fonts/Montserrat/Montserrat-Medium.woff') format('woff'), url('assets/fonts/Montserrat/Montserrat-Medium.ttf') format('truetype'), url('assets/fonts/Montserrat/Montserrat-Medium.svg') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Regular.eot');
+  src: local('☺'), url('assets/fonts/Montserrat/Montserrat-Regular.woff') format('woff'), url('assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'), url('assets/fonts/Montserrat/Montserrat-Regular.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  color: white;
 }
 
 body,
@@ -15,6 +39,8 @@ blockquote,
 dl,
 dd {
   margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
 }
 
 ul[role="list"],
@@ -42,10 +68,13 @@ picture {
 }
 
 input,
-button,
 textarea,
 select {
   font: inherit;
+}
+
+button {
+  font-family: Roboto, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {

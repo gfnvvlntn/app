@@ -1,29 +1,22 @@
-import React, {useContext} from "react";
-import {Context} from "../../index";
-import {observer} from "mobx-react-lite";
+import React, { useContext } from "react";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 import AuthForm from "../../form/AuthForm";
-import {Link} from "react-router-dom";
 
 const Registration = () => {
+  const { authStore } = useContext(Context);
 
-    const {store} = useContext(Context)
+  const onSubmit = async (value) => {
+    await authStore.registration(value.email, value.password);
+  };
 
-    const onSubmit = (value) => {
-        store.registration(value.email, value.password)
-    }
+  return (
+    <>
+      <AuthForm onSubmit={onSubmit} actionName={"Регистрация"} />
+    </>
+  );
+};
 
-    return (
-        <>
-            <AuthForm
-                onSubmit={onSubmit}
-                actionName={'REGISTRATION'}
-            />
-            <Link to={'/'}>Войти</Link>
-        </>
+Registration.displayName = "Registration";
 
-    )
-}
-
-Registration.displayName = 'Registration'
-
-export default observer(Registration)
+export default observer(Registration);
