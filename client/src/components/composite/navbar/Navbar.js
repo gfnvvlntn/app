@@ -3,13 +3,12 @@ import { Context } from "../../../index";
 import { observer } from "mobx-react-lite";
 import styled, { css } from "styled-components";
 
-import { ReactComponent as IconHome } from "../../../assets/image/icons/icon-nav-home.svg";
-import { ReactComponent as IconIncome } from "../../../assets/image/icons/icon-nav-income.svg";
-import { ReactComponent as IconExpenses } from "../../../assets/image/icons/icon-nav-expenses.svg";
-import { ReactComponent as IconStatistics } from "../../../assets/image/icons/icon-nav-statistics.svg";
 import { ReactComponent as IconSettings } from "../../../assets/image/icons/icon-nav-settings.svg";
 import { ReactComponent as IconLogin } from "../../../assets/image/icons/icon-nav-login.svg";
 import { ReactComponent as IconRegistration } from "../../../assets/image/icons/icon-nav-registration.svg";
+import { ReactComponent as IconLogo } from "../../../assets/image/icons/icon-logo.svg";
+import { ReactComponent as IconWarning } from "../../../assets/image/icons/icon-warning.svg";
+import { ReactComponent as IconLogout } from "../../../assets/image/icons/icon-nav-logout.svg";
 import NavbarLink from "./NavbarLink";
 
 const Navbar = () => {
@@ -30,18 +29,18 @@ const Navbar = () => {
     return (
       <NavbarContainer>
         <NavbarGroupLink>
-          <NavbarLink to={"/"} icon={<IconHome />} />
-          <NavbarLink to={"/income"} icon={<IconIncome />} />
-          <NavbarLink to={"/expenses"} icon={<IconExpenses />} />
-          <NavbarLink to={"/statistics"} icon={<IconStatistics />} />
+          <IconLogo />
           <NavbarLine />
+        </NavbarGroupLink>
+        <NavbarGroupLink>
+          {!authStore.user.isActivated && <IconWarning />}
         </NavbarGroupLink>
         <NavbarGroupLink>
           <NavbarLine />
           <NavbarLink to={"/setting"} icon={<IconSettings />} />
           <NavbarLink
             to={"/login"}
-            icon={<IconLogin />}
+            icon={<IconLogout />}
             onClick={() => authStore.logout()}
           />
         </NavbarGroupLink>
@@ -58,19 +57,18 @@ const NavbarContainer = styled("div")(
   ({ theme }) => css`
     width: 80px;
     min-height: 100vh;
-    background-color: ${theme.color.main};
+    background-color: ${theme.color.second};
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   `
 );
 
 const NavbarGroupLink = styled("div")`
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
+  padding: 30px 0;
   gap: 20px;
 `;
 

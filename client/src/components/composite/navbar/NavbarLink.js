@@ -12,7 +12,7 @@ const NavbarLink = ({ to, icon, onClick }) => {
 
 NavbarLink.displayName = "NavbarLink";
 
-export default NavbarLink;
+export default React.memo(NavbarLink);
 
 const Link = styled(NavLink)`
   opacity: 0.6;

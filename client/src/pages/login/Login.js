@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
-import AuthForm from "../../form/AuthForm";
 import { Context } from "../../index";
 import {observer} from "mobx-react-lite";
+import LoginForm from "./LoginForm";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
   const { authStore } = useContext(Context);
+  const navigate = useNavigate()
 
   const onSubmit = async (value) => {
     await authStore.login(value.email, value.password);
+    navigate('/')
   };
   return (
     <>
-      <AuthForm onSubmit={onSubmit} actionName={"Войти"} />
+      <LoginForm onSubmit={onSubmit}/>
     </>
   );
 };

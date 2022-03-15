@@ -1,0 +1,82 @@
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+
+import { useForm, FormProvider } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import useFormSchema from "./RegistrationSchema";
+
+import Input from "../../components/base/input/Input";
+import Button, { ButtonVariant } from "../../components/base/button/Button";
+import HeaderMessage from "../../components/composite/header/HeaderMessage";
+
+const RegistrationForm = ({ onSubmit }) => {
+  const [message, setMessage] = useState("");
+  const { defaultSchema, defaultValues } = useFormSchema();
+  const form = useForm({
+    resolver: yupResolver(defaultSchema),
+    defaultValues: defaultValues,
+  });
+
+  const onSubmitHandler = form.handleSubmit(
+    (values) => {
+      onSubmit(values);
+    },
+    (errors) => {
+      setMessage(Object.entries(errors)[0][1].message);
+    }
+  );
+
+  return (
+    <FormProvider {...form}>
+      <Layout>
+        <Container>
+          <HeaderMessage
+              title={"Регистрация на платформе"}
+              messageError={message}
+              messageSuccess={""}
+          />
+          <Content>
+            <Input name={"email"} placeholder={"Почта"} />
+            <Input name={"password"} placeholder={"Пароль"} />
+            <Input name={"repeatPassword"} placeholder={"Повторить пароль"} />
+            <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
+              Регистрация
+            </Button>
+          </Content>
+        </Container>
+      </Layout>
+    </FormProvider>
+  );
+};
+
+RegistrationForm.displayName = "RegistrationForm";
+
+export default RegistrationForm;
+
+const Layout = styled("div")`
+  margin: auto;
+`;
+
+const Container = styled("div")(
+    ({ theme }) => css`
+    position: relative;
+    overflow: hidden;
+    background-color: ${theme.color.main};
+    border-radius: 12px;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  `
+);
+
+const Content = styled("div")(
+    ({ theme }) => css`
+      width: 400px;
+      background-color: ${theme.color.main};
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-radius: 12px;
+    `
+);

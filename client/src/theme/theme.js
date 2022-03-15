@@ -1,11 +1,17 @@
 export const theme = {
   color: {
-    main: "#575c7c",
-    second: "#373b53",
-    third: "#598c82",
+    main: "#1c1c24",
+    second: "#15161b",
+    third: "#232429",
     border: "white",
+    red: "#d85050",
+    green: "#598C82",
   },
   font: {
-    color: 'white'
-  }
+    color: "white",
+  },
+  button: {
+    primary: "#51b7c3",
+    secondary: "#f9796c",
+  },
 };

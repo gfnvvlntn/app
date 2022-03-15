@@ -1,10 +1,11 @@
 import React from "react";
+import MainLayout from "../../components/composite/layouts/MainLayout";
 
 const Settings = () => {
     return(
-        <div>
+        <MainLayout>
             <h3>Страница настроек</h3>
-        </div>
+        </MainLayout>
     )
 }
 

@@ -6,6 +6,7 @@ import Pages from "./pages/Pages";
 import Navbar from "./components/composite/navbar/Navbar";
 import styled, { css, ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme";
+import PageBar from "./components/composite/pagebar/PageBar";
 
 function App() {
   const { authStore } = useContext(Context);
@@ -22,7 +23,8 @@ function App() {
         <AppContainer>
           <AppContent>
             <Navbar />
-            <Pages />
+            {authStore.isAuth && <PageBar />}
+              <Pages />
           </AppContent>
         </AppContainer>
       </ThemeProvider>

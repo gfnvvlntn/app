@@ -12,9 +12,9 @@ const getBaseStyle = ({ theme }) => {
     font-size: 16px;
     font-weight: 500;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 666px;
     cursor: pointer;
-    border: 1px solid ${theme.color.border};
+    border: none;
   `;
 };
 
@@ -23,11 +23,10 @@ const getVariantStyle = ({ theme, variant }) => {
     case ButtonVariant.PRIMARY: {
       return css`
         color: ${theme.font.color};
-        background-color: ${theme.color.main};
+        background-color: ${theme.button.primary};
         &:hover {
           color: ${theme.color.main};
           background-color: ${theme.font.color};
-          border: 1px solid ${theme.color.main};
         }
         &:active {
           color: ${theme.color.main};
@@ -43,7 +42,7 @@ const getVariantStyle = ({ theme, variant }) => {
     case ButtonVariant.SECONDARY: {
       return css`
         color: ${theme.font.color};
-        background-color: ${theme.color.third};
+        background-color: ${theme.button.secondary};
         &:hover {
           color: #${theme.color.third};
           background-color: ${theme.font.color};
