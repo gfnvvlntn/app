@@ -35,6 +35,7 @@ const FieldWrapper = styled("div")(
 );
 
 const Field = styled("input")`
+  width: 90%;
   border: none;
   outline: none;
   background-color: inherit;
@@ -45,3 +46,10 @@ const Field = styled("input")`
     opacity: 0.7;
   }
 `;
+
+const Icon = styled("div")(
+  ({ error, theme }) => css`
+    display: flex;
+    stroke: ${error ? theme.color.red : theme.color.border};
+  `
+);

@@ -31,9 +31,9 @@ const RegistrationForm = ({ onSubmit }) => {
       <Layout>
         <Container>
           <HeaderMessage
-              title={"Регистрация на платформе"}
-              messageError={message}
-              messageSuccess={""}
+            title={"Регистрация на платформе"}
+            messageError={message}
+            messageSuccess={""}
           />
           <Content>
             <Input name={"email"} placeholder={"Почта"} />
@@ -58,7 +58,7 @@ const Layout = styled("div")`
 `;
 
 const Container = styled("div")(
-    ({ theme }) => css`
+  ({ theme }) => css`
     position: relative;
     overflow: hidden;
     background-color: ${theme.color.main};
@@ -71,12 +71,12 @@ const Container = styled("div")(
 );
 
 const Content = styled("div")(
-    ({ theme }) => css`
-      width: 400px;
-      background-color: ${theme.color.main};
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      border-radius: 12px;
-    `
+  ({ theme }) => css`
+    width: 400px;
+    background-color: ${theme.color.main};
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 12px;
+  `
 );
