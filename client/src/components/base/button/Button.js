@@ -31,7 +31,6 @@ const getVariantStyle = ({ theme, variant }) => {
         &:active {
           color: ${theme.color.main};
           background-color: ${theme.font.color};
-          border: 1px solid ${theme.color.main};
         }
 
         &[disabled] {
@@ -46,12 +45,10 @@ const getVariantStyle = ({ theme, variant }) => {
         &:hover {
           color: #${theme.color.third};
           background-color: ${theme.font.color};
-          border: 1px solid ${theme.color.third};
         }
         &:active {
           color: ${theme.color.third};
           background-color: ${theme.font.color};
-          border: 1px solid ${theme.color.third};
         }
 
         &[disabled] {

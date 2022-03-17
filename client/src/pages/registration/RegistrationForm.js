@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -8,10 +8,14 @@ import useFormSchema from "./RegistrationSchema";
 import Input from "../../components/base/input/Input";
 import Button, { ButtonVariant } from "../../components/base/button/Button";
 import HeaderMessage from "../../components/composite/header/HeaderMessage";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 
 const RegistrationForm = ({ onSubmit }) => {
-  const [message, setMessage] = useState("");
+  const { authStore } = useContext(Context);
+
   const { defaultSchema, defaultValues } = useFormSchema();
+
   const form = useForm({
     resolver: yupResolver(defaultSchema),
     defaultValues: defaultValues,
@@ -22,7 +26,7 @@ const RegistrationForm = ({ onSubmit }) => {
       onSubmit(values);
     },
     (errors) => {
-      setMessage(Object.entries(errors)[0][1].message);
+      authStore.setMessage(Object.entries(errors)[0][1].message);
     }
   );
 
@@ -30,11 +34,7 @@ const RegistrationForm = ({ onSubmit }) => {
     <FormProvider {...form}>
       <Layout>
         <Container>
-          <HeaderMessage
-            title={"Регистрация на платформе"}
-            messageError={message}
-            messageSuccess={""}
-          />
+          <HeaderMessage title={"Регистрация на платформе"} />
           <Content>
             <Input name={"email"} placeholder={"Почта"} />
             <Input name={"password"} placeholder={"Пароль"} />
@@ -51,7 +51,7 @@ const RegistrationForm = ({ onSubmit }) => {
 
 RegistrationForm.displayName = "RegistrationForm";
 
-export default RegistrationForm;
+export default observer(RegistrationForm);
 
 const Layout = styled("div")`
   margin: auto;

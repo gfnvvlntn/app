@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 
 import { useForm, FormProvider } from "react-hook-form";
@@ -8,9 +8,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button, { ButtonVariant } from "../../components/base/button/Button";
 import HeaderMessage from "../../components/composite/header/HeaderMessage";
 import Input from "../../components/base/input/Input";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 
 const LoginForm = ({ onSubmit }) => {
-  const [message, setMessage] = useState("");
+  const { authStore } = useContext(Context);
+
   const { defaultSchema, defaultValues } = useFormSchema();
 
   const form = useForm({
@@ -19,11 +22,11 @@ const LoginForm = ({ onSubmit }) => {
   });
 
   const onSubmitHandler = form.handleSubmit(
-    (value) => {
-      onSubmit(value);
+    (values) => {
+      onSubmit(values);
     },
     (errors) => {
-      setMessage(Object.entries(errors)[0][1].message);
+      authStore.setMessage(Object.entries(errors)[0][1].message);
     }
   );
   return (
@@ -32,8 +35,6 @@ const LoginForm = ({ onSubmit }) => {
         <Container>
           <HeaderMessage
             title={"Вход"}
-            messageError={message}
-            messageSuccess={""}
           />
           <Content>
             <Input placeholder={"Почта"} name={"email"} />
@@ -50,7 +51,7 @@ const LoginForm = ({ onSubmit }) => {
 
 LoginForm.displayName = "LoginForm";
 
-export default LoginForm;
+export default observer(LoginForm);
 
 const Layout = styled("div")`
   margin: auto;
@@ -62,7 +63,7 @@ const Container = styled("div")(
     overflow: hidden;
     background-color: ${theme.color.main};
     border-radius: 12px;
-    padding: 40px 60px;
+    padding: 40px 60px 60px 60px;
     display: flex;
     align-items: center;
     flex-direction: column;

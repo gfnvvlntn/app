@@ -21,6 +21,7 @@ const Pages = () => {
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/setting" element={<Settings />} />
+        <Route path={"*"} element={<Home />} />
       </Routes>
     );
   }

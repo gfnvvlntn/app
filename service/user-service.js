@@ -15,7 +15,8 @@ class UserService {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
       throw ApiError.BadRequest(
-        `Пользователь с таким email ${email} уже существует`
+        `Пользователь с таким email уже существует`,
+          1
       );
     }
     const hashPassword = await bcrypt.hash(password, 3);
@@ -24,7 +25,7 @@ class UserService {
       email,
       password: hashPassword,
       activationLink,
-      role: 'client'
+      role: 'user'
     });
     await mailService.sendActivationMail(
       email,
@@ -42,13 +43,15 @@ class UserService {
     const user = await UserModel.findOne({ email });
     if (!user) {
       throw ApiError.BadRequest(
-        `Пользователь с таким email или паролем не существует`
+        `Пользователь с таким email или паролем не существует`,
+          1
       );
     }
     const isPasswordEquals = await bcrypt.compare(password, user.password);
     if (!isPasswordEquals) {
       throw ApiError.BadRequest(
-        `Пользователь с таким email или паролем не существует`
+        `Пользователь с таким email или паролем не существует`,
+          1
       );
     }
     const userDto = new UserDto(user);
