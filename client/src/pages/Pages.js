@@ -5,7 +5,7 @@ import Login from "./login/Login";
 import { Context } from "../index";
 import Home from "./home/Home";
 import { observer } from "mobx-react-lite";
-import Income from "./income/Income";
+import Income from "./incomes/Incomes";
 import Expenses from "./expenses/Expenses";
 import Statistics from "./statistics/Statistics";
 import Settings from "./settings/Settings";
@@ -17,7 +17,7 @@ const Pages = () => {
     return (
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/income" element={<Income />} />
+        <Route path="/incomes" element={<Income />} />
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/setting" element={<Settings />} />

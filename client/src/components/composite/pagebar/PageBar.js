@@ -15,7 +15,7 @@ const PageBar = () => {
       </PageBarHeader>
       <PageBarLine />
       <PageBarLink to={"/"} icon={<IconHome />} title={"Главная"} />
-      <PageBarLink to={"/income"} icon={<IconIncome />} title={"Доходы"} />
+      <PageBarLink to={"/incomes"} icon={<IconIncome />} title={"Доходы"} />
       <PageBarLink to={"/expenses"} icon={<IconExpenses />} title={"Расходы"} />
       <PageBarLink
         to={"/statistics"}

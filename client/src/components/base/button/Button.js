@@ -25,8 +25,7 @@ const getVariantStyle = ({ theme, variant }) => {
         color: ${theme.font.color};
         background-color: ${theme.button.primary};
         &:hover {
-          color: ${theme.color.main};
-          background-color: ${theme.font.color};
+          opacity: 0.8;
         }
         &:active {
           color: ${theme.color.main};
@@ -43,8 +42,7 @@ const getVariantStyle = ({ theme, variant }) => {
         color: ${theme.font.color};
         background-color: ${theme.button.secondary};
         &:hover {
-          color: #${theme.color.third};
-          background-color: ${theme.font.color};
+          opacity: 0.8;
         }
         &:active {
           color: ${theme.color.third};

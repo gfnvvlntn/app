@@ -1,11 +1,13 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import MainLayout from "../../components/composite/layouts/MainLayout";
+import ExpensesFormWidget from "./widgets/ExpensesFormWidget";
 
 const Expenses = () => {
   return (
     <MainLayout>
       <ExpensesHeader>Расходы</ExpensesHeader>
+        <ExpensesFormWidget />
     </MainLayout>
   );
 };
