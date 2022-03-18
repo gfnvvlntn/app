@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
-import AuthService from "../services/AuthService";
+import AuthService from "../services/authService";
 import axios from "axios";
 import { BASE_URL } from "../hooks/use-api";
 
 export default class AuthStore {
   user = JSON.parse(localStorage.getItem("user")) || {};
   isAuth = JSON.parse(localStorage.getItem("isAuth")) || false;
-  message = null
+  message = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -21,10 +21,10 @@ export default class AuthStore {
   }
 
   setMessage(message) {
-    this.message = message
+    this.message = message;
     setTimeout(() => {
-      this.message = ''
-    }, 3000)
+      this.message = "";
+    }, 3000);
   }
 
   saveUser(response) {
@@ -38,7 +38,7 @@ export default class AuthStore {
   async login(email, password) {
     try {
       const response = await AuthService.login(email, password);
-      this.saveUser(response)
+      this.saveUser(response);
     } catch (e) {
       this.setMessage(e.response?.data?.message);
     }
@@ -47,7 +47,7 @@ export default class AuthStore {
   async registration(email, password) {
     try {
       const response = await AuthService.registration(email, password);
-      this.saveUser(response)
+      this.saveUser(response);
     } catch (e) {
       this.setMessage(e.response?.data?.message);
     }

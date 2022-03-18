@@ -9,13 +9,17 @@ import { theme } from "./theme/theme";
 import PageBar from "./components/composite/pagebar/PageBar";
 
 function App() {
-  const { authStore } = useContext(Context);
+  const { authStore, transactionsStore } = useContext(Context);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       authStore.checkAuth();
     }
   }, []);
+
+  useEffect(() => {
+    transactionsStore.getBalance()
+  }, [])
 
   return (
     <BrowserRouter>

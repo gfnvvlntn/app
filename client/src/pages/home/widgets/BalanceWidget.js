@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import Typography, {
   TypographyVariant,
 } from "../../../components/base/typography/Typography";
@@ -6,8 +6,12 @@ import { theme } from "../../../theme/theme";
 import Moment from "react-moment";
 import { ReactComponent as IconRuble } from "../../../assets/image/icons/icon-ruble.svg";
 import styled, { css } from "styled-components";
+import {Context} from "../../../index";
 
-const BalanceWidget = ({balance}) => {
+const BalanceWidget = () => {
+
+  const {transactionsStore} = useContext(Context)
+
   return (
     <HomeBalanceWidget>
       <HomeBalance>
@@ -24,7 +28,7 @@ const BalanceWidget = ({balance}) => {
         </Typography>
         <HomeBalanceLine>
           <IconRuble />
-          <Typography variant={TypographyVariant.h1}>{balance}</Typography>
+          <Typography variant={TypographyVariant.h1}>{transactionsStore.balance}</Typography>
         </HomeBalanceLine>
       </HomeBalance>
     </HomeBalanceWidget>
