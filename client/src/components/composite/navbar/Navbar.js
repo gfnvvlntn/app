@@ -57,7 +57,7 @@ const NavbarContainer = styled("div")(
   ({ theme }) => css`
     width: 80px;
     min-height: 100vh;
-    background-color: ${theme.color.second};
+    // background-color: ${theme.color.second};
     display: flex;
     justify-content: space-between;
     align-items: center;

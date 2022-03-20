@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Typography, {
   TypographyVariant,
 } from "../../../components/base/typography/Typography";
@@ -6,11 +6,12 @@ import { theme } from "../../../theme/theme";
 import Moment from "react-moment";
 import { ReactComponent as IconRuble } from "../../../assets/image/icons/icon-ruble.svg";
 import styled, { css } from "styled-components";
-import {Context} from "../../../index";
+import { Context } from "../../../index";
+import {observer} from "mobx-react-lite";
 
 const BalanceWidget = () => {
+  const { budgetStore } = useContext(Context);
 
-  const {transactionsStore} = useContext(Context)
 
   return (
     <HomeBalanceWidget>
@@ -19,7 +20,9 @@ const BalanceWidget = () => {
           Дата
         </Typography>
         <Typography variant={TypographyVariant.h2}>
-          <Moment format="DD.MM.YYYY" />
+            <Moment format="DD" className={'time'}/>
+            <Moment format="MM" className={'time'}/>
+            <Moment format="YY" className={'time'}/>
         </Typography>
       </HomeBalance>
       <HomeBalance>
@@ -28,7 +31,9 @@ const BalanceWidget = () => {
         </Typography>
         <HomeBalanceLine>
           <IconRuble />
-          <Typography variant={TypographyVariant.h1}>{transactionsStore.balance}</Typography>
+          <Typography variant={TypographyVariant.h1}>
+            {budgetStore.balance}
+          </Typography>
         </HomeBalanceLine>
       </HomeBalance>
     </HomeBalanceWidget>
@@ -37,14 +42,13 @@ const BalanceWidget = () => {
 
 BalanceWidget.displayName = "BalanceWidget";
 
-export default BalanceWidget;
+export default observer(BalanceWidget);
 
 const HomeBalanceWidget = styled("div")(
   ({ theme }) => css`
     background-color: ${theme.color.second};
     width: 400px;
     height: 200px;
-    margin: 30px;
     padding: 20px;
     display: flex;
     flex-direction: column;

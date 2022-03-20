@@ -9,7 +9,7 @@ import { theme } from "./theme/theme";
 import PageBar from "./components/composite/pagebar/PageBar";
 
 function App() {
-  const { authStore, transactionsStore } = useContext(Context);
+  const { authStore, budgetStore } = useContext(Context);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -18,8 +18,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    transactionsStore.getBalance()
-  }, [])
+    budgetStore.getBalance();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -28,7 +28,7 @@ function App() {
           <AppContent>
             <Navbar />
             {authStore.isAuth && <PageBar />}
-              <Pages />
+            <Pages />
           </AppContent>
         </AppContainer>
       </ThemeProvider>
@@ -45,6 +45,6 @@ const AppContainer = styled("div")(
   `
 );
 
-const AppContent = styled('div')`
+const AppContent = styled("div")`
   display: flex;
-`
+`;

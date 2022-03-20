@@ -1,9 +1,11 @@
 module.exports = class BudgetDto {
     balance
-    id
+    expenses
+    incomes
 
     constructor(model) {
+        this.expenses = model.expenses
+        this.incomes = model.incomes
         this.balance = model.balance
-        this.id = model._id
     }
 }

@@ -3,17 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import AuthStore from "./store/authStore";
-import TransactionsStore from "./store/transactionsStore";
+import BudgetStore from "./store/budgetStore";
 
 const authStore = new AuthStore();
-const transactionsStore = new TransactionsStore()
+const budgetStore = new BudgetStore();
 
 export const Context = createContext({
-  authStore, transactionsStore
+  authStore,
+  budgetStore,
 });
 
 ReactDOM.render(
-  <Context.Provider value={{ authStore, transactionsStore }}>
+  <Context.Provider value={{ authStore, budgetStore }}>
     <React.StrictMode>
       <App />
     </React.StrictMode>

@@ -41,7 +41,6 @@ const HomeIncomeWidget = styled("div")(
     background-color: ${theme.color.second};
     width: 400px;
     height: 200px;
-    margin: 30px;
     padding: 20px;
     display: flex;
     flex-direction: column;

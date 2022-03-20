@@ -4,7 +4,7 @@ const BudgetController = require("../controllers/budget-controller");
 const router = new Router();
 const { check } = require("express-validator");
 
-const AuthMiddleware = require('../middleware/auth-middleware')
+const AuthMiddleware = require("../middleware/auth-middleware");
 
 router.post(
   "/registration",
@@ -22,6 +22,8 @@ router.post("/logout", UserController.logout);
 router.get("/activate/:link", UserController.activated);
 router.get("/refresh", UserController.refresh);
 
-router.get("/getBalance", AuthMiddleware, BudgetController.getBalance);
+router.get("/get-balance", AuthMiddleware, BudgetController.getBalance);
+router.post("/create-action", AuthMiddleware, BudgetController.createAction);
+router.post("/delete-action", AuthMiddleware, BudgetController.deleteAction);
 
 module.exports = router;
