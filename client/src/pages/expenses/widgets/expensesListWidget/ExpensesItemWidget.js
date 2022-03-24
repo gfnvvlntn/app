@@ -14,8 +14,8 @@ import { Context } from "../../../../index";
 const ExpensesItemWidget = ({ expense }) => {
   const { budgetStore } = useContext(Context);
 
-  const onDeleteAction = () => {
-    budgetStore.deleteAction(expense._id);
+  const onDeleteAction = async () => {
+    await budgetStore.deleteAction(expense._id);
   };
 
   return (

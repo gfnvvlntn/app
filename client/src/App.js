@@ -11,14 +11,14 @@ import PageBar from "./components/composite/pagebar/PageBar";
 function App() {
   const { authStore, budgetStore } = useContext(Context);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (localStorage.getItem("token")) {
-      authStore.checkAuth();
+      await authStore.checkAuth();
     }
   }, []);
 
-  useEffect(() => {
-    budgetStore.getBalance();
+  useEffect(async () => {
+    await budgetStore.getBalance();
   }, []);
 
   return (

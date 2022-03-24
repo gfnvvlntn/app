@@ -13,8 +13,8 @@ const ExpensesFormWidget = () => {
 
   const form = useForm();
 
-  const onSubmitHandler = form.handleSubmit((value) => {
-    budgetStore.createAction(value.expense * -1);
+  const onSubmitHandler = form.handleSubmit(async (value) => {
+    await budgetStore.createAction(value.expense * -1);
   });
 
   return (

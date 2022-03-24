@@ -13,8 +13,8 @@ const IncomesFormWidget = () => {
 
   const form = useForm();
 
-  const onSubmitHandler = form.handleSubmit((value) => {
-    budgetStore.createAction(value.income);
+  const onSubmitHandler = form.handleSubmit(async (value) => {
+    await budgetStore.createAction(value.income);
   });
 
   return (

@@ -46,10 +46,3 @@ const Field = styled("input")`
     opacity: 0.7;
   }
 `;
-
-const Icon = styled("div")(
-  ({ error, theme }) => css`
-    display: flex;
-    stroke: ${error ? theme.color.red : theme.color.border};
-  `
-);

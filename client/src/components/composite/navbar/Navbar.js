@@ -14,6 +14,10 @@ import NavbarLink from "./NavbarLink";
 const Navbar = () => {
   const { authStore } = useContext(Context);
 
+  const onLogout = async () => {
+     await authStore.logout()
+  }
+
   if (!authStore.isAuth) {
     return (
       <NavbarContainer>
@@ -41,7 +45,7 @@ const Navbar = () => {
           <NavbarLink
             to={"/login"}
             icon={<IconLogout />}
-            onClick={() => authStore.logout()}
+            onClick={onLogout}
           />
         </NavbarGroupLink>
       </NavbarContainer>

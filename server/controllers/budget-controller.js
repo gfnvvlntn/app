@@ -6,7 +6,7 @@ class BudgetController {
     try {
       const user = req.user;
       if (!user.id) {
-        return next(ApiError.BadRequest("Нет параметров"));
+        return next(ApiError.UnAuthorizedError());
       }
 
       const balanceData = await budgetService.getBalance(user.id);
@@ -42,14 +42,14 @@ class BudgetController {
     try {
       const { actionId } = req.body;
 
+      if (!actionId) {
+        return next(ApiError.BadRequest("Такой записи не существует"));
+      }
+
       const user = req.user;
 
       if (!user.id) {
         return next(ApiError.UnAuthorizedError());
-      }
-
-      if (!actionId) {
-        return next(ApiError.BadRequest("Неправильно передан елемент"));
       }
 
       const balanceData = await budgetService.deleteAction(actionId, user.id);
