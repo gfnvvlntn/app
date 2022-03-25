@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import Typography, {
-  TypographyVariant,
-} from "../../../components/base/typography/Typography";
+
 import { theme } from "../../../theme/theme";
 import Moment from "react-moment";
 import { ReactComponent as IconRuble } from "../../../assets/image/icons/icon-ruble.svg";
 import styled, { css } from "styled-components";
 import { Context } from "../../../index";
 import {observer} from "mobx-react-lite";
+import {Typography} from "../../../components/base";
+import {TypographyVariant} from "../../../components/base/typography/Typography";
 
 const BalanceWidget = () => {
   const { budgetStore } = useContext(Context);

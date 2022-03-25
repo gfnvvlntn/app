@@ -1,11 +1,22 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import MainLayout from "../../components/composite/layouts/MainLayout";
+import {Tab, Tabs} from "../../components/composite/tabs";
+
 
 const Statistics = () => {
   return (
     <MainLayout>
-      <StatisticsHeader>Статистика</StatisticsHeader>
+      <Tabs>
+        <Tab label={"Статистика"}>
+          <div>Статистика</div>
+        </Tab>
+        <Tab label={"График"}>
+          <div>График</div>
+        </Tab>
+        <Tab label={"Списки"}>
+          <div>Списки</div>
+        </Tab>
+      </Tabs>
     </MainLayout>
   );
 };
@@ -13,10 +24,3 @@ const Statistics = () => {
 Statistics.displayName = "Statistics";
 
 export default Statistics;
-
-const StatisticsHeader = styled("h3")(
-  ({ theme }) => css`
-    color: ${theme.button.primary};
-    margin: 20px;
-  `
-);

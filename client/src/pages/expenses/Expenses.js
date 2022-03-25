@@ -3,15 +3,21 @@ import styled, { css } from "styled-components";
 import MainLayout from "../../components/composite/layouts/MainLayout";
 import ExpensesFormWidget from "./widgets/expensesFormWidget/ExpensesFormWidget";
 import ExpensesListWidget from "./widgets/expensesListWidget/ExpensesListWidget";
+import {Tab, Tabs} from "../../components/composite/tabs";
+
 
 const Expenses = () => {
   return (
     <MainLayout>
-      <ExpensesHeader>Расходы</ExpensesHeader>
-      <ExpensesBody>
-        <ExpensesFormWidget />
-        <ExpensesListWidget />
-      </ExpensesBody>
+        <Tabs>
+            <Tab label={'Расходы'}>
+                <ExpensesBody>
+                    <ExpensesFormWidget />
+                    <ExpensesListWidget />
+                </ExpensesBody>
+            </Tab>
+            <Tab label={'Копилка'}>Копилка</Tab>
+        </Tabs>
     </MainLayout>
   );
 };
@@ -20,17 +26,9 @@ Expenses.displayName = "Expenses";
 
 export default Expenses;
 
-const ExpensesHeader = styled("h3")(
-  ({ theme }) => css`
-    color: ${theme.button.primary};
-    margin: 20px;
-  `
-);
-
 const ExpensesBody = styled("div")(
   () => css`
     display: flex;
     gap: 20px;
-    padding: 20px;
   `
 );

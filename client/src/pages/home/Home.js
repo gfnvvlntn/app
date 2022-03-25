@@ -7,11 +7,12 @@ import BalanceWidget from "./widgets/BalanceWidget";
 import ExpensesWidget from "./widgets/ExpensesWidget";
 import IncomesWidget from "./widgets/IncomesWidget";
 import ExchangeRatesWidget from "./widgets/ExchangeRatesWidget";
+import Typography, {TypographyVariant} from "../../components/base/typography/Typography";
 
 const Home = () => {
   return (
     <MainLayout>
-      <HomeHeader>Главная</HomeHeader>
+      <HomeHeader variant={TypographyVariant.h2}>Главная</HomeHeader>
       <HomeBody>
         <HomeLeftWidgets>
           <BalanceWidget />
@@ -30,14 +31,14 @@ Home.displayName = "Home";
 
 export default observer(Home);
 
-const HomeHeader = styled("h3")(
+const HomeHeader = styled(Typography)(
   ({ theme }) => css`
     color: ${theme.button.primary};
     margin: 20px;
   `
 );
 
-const HomeBody = styled("h3")(
+const HomeBody = styled("div")(
   () => css`
     display: flex;
     padding: 20px;
@@ -45,7 +46,7 @@ const HomeBody = styled("h3")(
   `
 );
 
-const HomeLeftWidgets = styled("h3")(
+const HomeLeftWidgets = styled("div")(
   () => css`
     display: flex;
     flex-direction: column;
@@ -53,7 +54,7 @@ const HomeLeftWidgets = styled("h3")(
   `
 );
 
-const HomeRightWidgets = styled("h3")(
+const HomeRightWidgets = styled("div")(
   () => css`
     display: flex;
     flex-direction: column;

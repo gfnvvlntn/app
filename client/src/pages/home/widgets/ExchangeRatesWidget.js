@@ -6,12 +6,6 @@ import { ReactComponent as IconDollar } from "../../../assets/image/icons/icon-d
 import { ReactComponent as IconRuble } from "../../../assets/image/icons/icon-ruble.svg";
 
 const ExchangeRatesWidget = () => {
-  // useEffect(() => {
-  //   axios.get(
-  //     `http://www.cbr.ru/scripts/XML_daily.asp`
-  //   ).then(response => console.log(response))
-  // }, []);
-
   return (
     <HomeExchangeRatesWidget>
       <Euro>

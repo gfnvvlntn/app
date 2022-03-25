@@ -4,7 +4,6 @@ import MainLayout from "../../components/composite/layouts/MainLayout";
 const Settings = () => {
     return(
         <MainLayout>
-            <h3>Страница настроек</h3>
         </MainLayout>
     )
 }
