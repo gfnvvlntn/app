@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
-import { Context } from "./index";
+import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import { BrowserRouter } from "react-router-dom";
-import Pages from "./pages/Pages";
-import Navbar from "./components/composite/navbar/Navbar";
+import Pages from "pages/Pages";
+import Navbar from "components/composite/navbar/Navbar";
 import styled, { css, ThemeProvider } from "styled-components";
-import { theme } from "./theme/theme";
-import PageBar from "./components/composite/pagebar/PageBar";
+import { theme } from "theme/theme";
+import PageBar from "components/composite/pagebar/PageBar";
 
 function App() {
   const { authStore, budgetStore } = useContext(Context);

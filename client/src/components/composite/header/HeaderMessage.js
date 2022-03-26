@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
-import Typography, {
-  TypographyVariant,
-} from "../../base/typography/Typography";
-import {Context} from "../../../index";
+
+import {Context} from "index";
+import {Typography, TypographyVariant} from "../../base";
 
 const HeaderMessage = ({ title }) => {
     const { authStore } = useContext(Context);

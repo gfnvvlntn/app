@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import BudgetService from "../services/budgetService";
+import BudgetService from "services/budgetService";
 
 export default class BudgetStore {
   balance = 0;
-  incomes = []
-  expenses = []
+  incomes = [];
+  expenses = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -14,19 +14,19 @@ export default class BudgetStore {
   }
 
   setIncomes(value) {
-    this.incomes = value
+    this.incomes = value;
   }
 
   setExpenses(value) {
-    this.expenses = value
+    this.expenses = value;
   }
 
   async getBalance() {
     try {
       const response = await BudgetService.getBalance();
       this.setBalance(response.data.balance);
-      this.setIncomes(response.data.incomes)
-      this.setExpenses(response.data.expenses)
+      this.setIncomes(response.data.incomes);
+      this.setExpenses(response.data.expenses);
     } catch (e) {
       console.log(e.response?.data?.message);
     }
@@ -34,24 +34,23 @@ export default class BudgetStore {
 
   async createAction(action) {
     try {
-      const response = await BudgetService.createAction(action)
+      const response = await BudgetService.createAction(action);
       this.setBalance(response.data.balance);
-      this.setIncomes(response.data.incomes)
-      this.setExpenses(response.data.expenses)
-    }catch (e) {
+      this.setIncomes(response.data.incomes);
+      this.setExpenses(response.data.expenses);
+    } catch (e) {
       console.log(e.response?.data?.message);
     }
   }
 
   async deleteAction(id) {
     try {
-      const response = await BudgetService.deleteAction(id)
+      const response = await BudgetService.deleteAction(id);
       this.setBalance(response.data.balance);
-      this.setIncomes(response.data.incomes)
-      this.setExpenses(response.data.expenses)
-    }catch (e) {
+      this.setIncomes(response.data.incomes);
+      this.setExpenses(response.data.expenses);
+    } catch (e) {
       console.log(e.response?.data?.message);
     }
   }
-
 }

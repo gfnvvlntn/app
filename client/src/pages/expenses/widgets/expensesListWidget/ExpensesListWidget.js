@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
-import Typography from "../../../../components/base/typography/Typography";
-import { Context } from "../../../../index";
+import { Context } from "index";
 import ExpensesItemWidget from "./ExpensesItemWidget";
 
-import { ReactComponent as IconFilter } from "../../../../assets/image/icons/icon-filter.svg";
+import { ReactComponent as IconFilter } from "assets/image/icons/icon-filter.svg";
 import { observer } from "mobx-react-lite";
+import {Typography} from "../../../../components/base";
 
 const ExpensesListWidget = () => {
   const { budgetStore } = useContext(Context);

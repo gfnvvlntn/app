@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import { Context } from "../../../index";
+import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import styled, { css } from "styled-components";
 
-import { ReactComponent as IconSettings } from "../../../assets/image/icons/icon-nav-settings.svg";
-import { ReactComponent as IconLogin } from "../../../assets/image/icons/icon-nav-login.svg";
-import { ReactComponent as IconRegistration } from "../../../assets/image/icons/icon-nav-registration.svg";
-import { ReactComponent as IconLogo } from "../../../assets/image/icons/icon-logo.svg";
-import { ReactComponent as IconWarning } from "../../../assets/image/icons/icon-warning.svg";
-import { ReactComponent as IconLogout } from "../../../assets/image/icons/icon-nav-logout.svg";
+import { ReactComponent as IconSettings } from "assets/image/icons/icon-nav-settings.svg";
+import { ReactComponent as IconLogin } from "assets/image/icons/icon-nav-login.svg";
+import { ReactComponent as IconRegistration } from "assets/image/icons/icon-nav-registration.svg";
+import { ReactComponent as IconLogo } from "assets/image/icons/icon-logo.svg";
+import { ReactComponent as IconWarning } from "assets/image/icons/icon-warning.svg";
+import { ReactComponent as IconLogout } from "assets/image/icons/icon-nav-logout.svg";
 import NavbarLink from "./NavbarLink";
 
 const Navbar = () => {

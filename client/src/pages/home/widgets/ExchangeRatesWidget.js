@@ -1,9 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-import { ReactComponent as IconEuro } from "../../../assets/image/icons/icon-euro.svg";
-import { ReactComponent as IconDollar } from "../../../assets/image/icons/icon-dollar.svg";
-import { ReactComponent as IconRuble } from "../../../assets/image/icons/icon-ruble.svg";
+import { ReactComponent as IconEuro } from "assets/image/icons/icon-euro.svg";
+import { ReactComponent as IconDollar } from "assets/image/icons/icon-dollar.svg";
+import { ReactComponent as IconRuble } from "assets/image/icons/icon-ruble.svg";
 
 const ExchangeRatesWidget = () => {
   return (

@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
-import Input from "../../../../components/base/input/Input";
-import Button, {
-  ButtonVariant,
-} from "../../../../components/base/button/Button";
 import { useForm, FormProvider } from "react-hook-form";
-import { Context } from "../../../../index";
+import { Context } from "index";
 import { observer } from "mobx-react-lite";
+import {Button, ButtonVariant, Input} from "components/base";
 
 const IncomesFormWidget = () => {
   const { budgetStore } = useContext(Context);

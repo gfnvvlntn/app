@@ -1,7 +1,6 @@
 import React from "react";
-import MainLayout from "../../components/composite/layouts/MainLayout";
-import {Tab, Tabs} from "../../components/composite/tabs";
-
+import MainLayout from "components/composite/layouts/MainLayout";
+import { Tab, Tabs } from "components/composite/tabs";
 
 const Statistics = () => {
   return (

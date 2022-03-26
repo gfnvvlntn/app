@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import styled, { css } from "styled-components";
 import Typography, { TypographyVariant } from "../typography/Typography";
 
-import { ReactComponent as IconArrow } from "../../../assets/image/icons/icon-dropdown.svg";
+import { ReactComponent as IconArrow } from "assets/image/icons/icon-dropdown.svg";
 
 const Dropdown = ({ option = [], placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);

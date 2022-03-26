@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import PageBarLink from "./PageBarLink";
 
-import { ReactComponent as IconHome } from "../../../assets/image/icons/icon-nav-home.svg";
-import { ReactComponent as IconIncome } from "../../../assets/image/icons/icon-nav-income.svg";
-import { ReactComponent as IconExpenses } from "../../../assets/image/icons/icon-nav-expenses.svg";
-import { ReactComponent as IconStatistics } from "../../../assets/image/icons/icon-nav-statistics.svg";
-import { Context } from "../../../index";
-import Typography, {TypographyVariant} from "../../base/typography/Typography";
+import { ReactComponent as IconHome } from "assets/image/icons/icon-nav-home.svg";
+import { ReactComponent as IconIncome } from "assets/image/icons/icon-nav-income.svg";
+import { ReactComponent as IconExpenses } from "assets/image/icons/icon-nav-expenses.svg";
+import { ReactComponent as IconStatistics } from "assets/image/icons/icon-nav-statistics.svg";
+import { Context } from "index";
+import { Typography, TypographyVariant } from "../../base";
 
 const PageBar = () => {
   const { authStore } = useContext(Context);

@@ -1,23 +1,22 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import MainLayout from "../../components/composite/layouts/MainLayout";
+import MainLayout from "components/composite/layouts/MainLayout";
 import ExpensesFormWidget from "./widgets/expensesFormWidget/ExpensesFormWidget";
 import ExpensesListWidget from "./widgets/expensesListWidget/ExpensesListWidget";
-import {Tab, Tabs} from "../../components/composite/tabs";
-
+import { Tab, Tabs } from "components/composite/tabs";
 
 const Expenses = () => {
   return (
     <MainLayout>
-        <Tabs>
-            <Tab label={'Расходы'}>
-                <ExpensesBody>
-                    <ExpensesFormWidget />
-                    <ExpensesListWidget />
-                </ExpensesBody>
-            </Tab>
-            <Tab label={'Копилка'}>Копилка</Tab>
-        </Tabs>
+      <Tabs>
+        <Tab label={"Расходы"}>
+          <ExpensesBody>
+            <ExpensesFormWidget />
+            <ExpensesListWidget />
+          </ExpensesBody>
+        </Tab>
+        <Tab label={"Копилка"}>Копилка</Tab>
+      </Tabs>
     </MainLayout>
   );
 };

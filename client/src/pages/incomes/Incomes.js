@@ -1,9 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import MainLayout from "../../components/composite/layouts/MainLayout";
+import MainLayout from "components/composite/layouts/MainLayout";
 import IncomesFormWidget from "./widgets/incomesFormWidget/IncomesFormWidget";
 import IncomesListWidget from "./widgets/incomesListWidget/IncomesListWidget";
-import {Tab, Tabs} from "../../components/composite/tabs";
+import {Tab, Tabs} from "components/composite/tabs";
 
 
 const Incomes = () => {

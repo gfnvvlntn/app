@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import AuthService from "../services/authService";
+import AuthService from "services/authService";
 import axios from "axios";
-import { BASE_URL } from "../hooks/use-api";
+import { BASE_URL } from "hooks/use-api";
 
 export default class AuthStore {
   user = JSON.parse(localStorage.getItem("user")) || {};

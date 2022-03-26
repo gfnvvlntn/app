@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 
-import { useForm, FormProvider } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import useFormSchema from "./LoginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Button, { ButtonVariant } from "../../components/base/button/Button";
-import HeaderMessage from "../../components/composite/header/HeaderMessage";
-import Input from "../../components/base/input/Input";
-import { Context } from "../../index";
+import HeaderMessage from "components/composite/header/HeaderMessage";
+import { Context } from "index";
 import { observer } from "mobx-react-lite";
+import { Button, ButtonVariant, Input } from "components/base";
 
 const LoginForm = ({ onSubmit }) => {
   const { authStore } = useContext(Context);
@@ -33,9 +32,7 @@ const LoginForm = ({ onSubmit }) => {
     <FormProvider {...form}>
       <Layout>
         <Container>
-          <HeaderMessage
-            title={"Вход"}
-          />
+          <HeaderMessage title={"Вход"} />
           <Content>
             <Input placeholder={"Почта"} name={"email"} />
             <Input placeholder={"Пароль"} name={"password"} />

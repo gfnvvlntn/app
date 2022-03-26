@@ -1,29 +1,8 @@
 import styled, { css } from "styled-components";
 import React from "react";
+import { TypographyTag, TypographyVariant } from "../index";
 
-export const TypographyVariant = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  text1: "text1",
-  text2: "text2",
-  text3: "text3",
-};
-
-export const TypographyTag = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  text1: "p",
-  text2: "p",
-  text3: "p",
-};
-
-const getDefaultStyle = ({color}) => css`
+const getDefaultStyle = ({ color }) => css`
   font-size: 1rem;
   margin: 0;
   padding: 0;
@@ -67,13 +46,18 @@ const Typography = ({
   children,
   variant = TypographyVariant.text1,
   as = null,
-    color,
+  color,
   ...props
 }) => {
   const tag = variant ? TypographyTag[variant] : TypographyTag.text1;
 
   return (
-    <TypographyStyled as={as ? as : tag} variant={variant} color={color} {...props}>
+    <TypographyStyled
+      as={as ? as : tag}
+      variant={variant}
+      color={color}
+      {...props}
+    >
       {children}
     </TypographyStyled>
   );

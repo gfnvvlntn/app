@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
+import { Context } from "index";
+import { observer } from "mobx-react-lite";
 
-import { useForm, FormProvider } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useFormSchema from "./RegistrationSchema";
 
-import Input from "../../components/base/input/Input";
-import Button, { ButtonVariant } from "../../components/base/button/Button";
-import HeaderMessage from "../../components/composite/header/HeaderMessage";
-import { Context } from "../../index";
-import { observer } from "mobx-react-lite";
+import HeaderMessage from "components/composite/header/HeaderMessage";
+import {Button, ButtonVariant, Input} from "components/base";
+
 
 const RegistrationForm = ({ onSubmit }) => {
   const { authStore } = useContext(Context);

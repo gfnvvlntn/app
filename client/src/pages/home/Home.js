@@ -1,13 +1,13 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import styled, { css } from "styled-components";
-import MainLayout from "../../components/composite/layouts/MainLayout";
+import MainLayout from "components/composite/layouts/MainLayout";
 
 import BalanceWidget from "./widgets/BalanceWidget";
 import ExpensesWidget from "./widgets/ExpensesWidget";
 import IncomesWidget from "./widgets/IncomesWidget";
 import ExchangeRatesWidget from "./widgets/ExchangeRatesWidget";
-import Typography, {TypographyVariant} from "../../components/base/typography/Typography";
+import {Typography, TypographyVariant} from "components/base";
 
 const Home = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
-import Typography, {TypographyVariant} from "../../base/typography/Typography";
+import { Typography, TypographyVariant } from "../../base";
 
 const TabLabel = ({ labels, openedTab, activeTab }) => {
   const onOpenedTab = useCallback((label) => {
@@ -35,7 +35,9 @@ const TabLabelContainer = styled("div")(
     gap: 50px;
   `
 );
-const Label = styled(Typography)(({ theme, active }) => css`
-  color: ${active ? theme.button.primary : theme.color.green};
-  cursor: pointer;
-`);
+const Label = styled(Typography)(
+  ({ theme, active }) => css`
+    color: ${active ? theme.button.primary : theme.color.green};
+    cursor: pointer;
+  `
+);

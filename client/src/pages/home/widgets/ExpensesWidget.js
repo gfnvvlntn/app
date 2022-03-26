@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { theme } from "../../../theme/theme";
-import { ReactComponent as IconRuble } from "../../../assets/image/icons/icon-ruble.svg";
+import { theme } from "theme/theme";
+import { ReactComponent as IconRuble } from "assets/image/icons/icon-ruble.svg";
 import styled, { css } from "styled-components";
-import Button, { ButtonVariant } from "../../../components/base/button/Button";
-import {Typography} from "../../../components/base";
-import {TypographyVariant} from "../../../components/base/typography/Typography";
+import {Button, ButtonVariant, Typography, TypographyVariant} from "components/base";
 
 const ExpensesWidget = () => {
   const navigate = useNavigate();

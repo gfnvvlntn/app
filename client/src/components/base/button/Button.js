@@ -1,9 +1,5 @@
 import styled, { css } from "styled-components";
-
-export const ButtonVariant = {
-  PRIMARY: "PRIMARY",
-  SECONDARY: "SECONDARY",
-};
+import { ButtonVariant } from "../index";
 
 const getBaseStyle = ({ theme }) => {
   return css`
