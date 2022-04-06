@@ -14,9 +14,7 @@ const ExpensesListWidget = () => {
     <ExpensesListContainer>
       <ExpensesFilter>
         <IconFilter />
-        <ExpensesFilterButton>День</ExpensesFilterButton>
-        <ExpensesFilterButton>Неделя</ExpensesFilterButton>
-        <ExpensesFilterButton>Месяц</ExpensesFilterButton>
+        <ExpensesFilterButton>По дате</ExpensesFilterButton>
       </ExpensesFilter>
       <ExpensesList>
         {budgetStore.expenses.map((expense) => (

@@ -5,6 +5,7 @@ export default class BudgetStore {
   balance = 0;
   incomes = [];
   expenses = [];
+  expensesToday = 0
 
   constructor() {
     makeAutoObservable(this);
@@ -21,12 +22,17 @@ export default class BudgetStore {
     this.expenses = value;
   }
 
+  setExpensesToday(value) {
+    this.expensesToday = value
+  }
+
   async getBalance() {
     try {
       const response = await BudgetService.getBalance();
       this.setBalance(response.data.balance);
       this.setIncomes(response.data.incomes);
       this.setExpenses(response.data.expenses);
+      this.setExpensesToday(response.data.expensesToday)
     } catch (e) {
       console.log(e.response?.data?.message);
     }
@@ -38,6 +44,7 @@ export default class BudgetStore {
       this.setBalance(response.data.balance);
       this.setIncomes(response.data.incomes);
       this.setExpenses(response.data.expenses);
+      this.setExpensesToday(response.data.expensesToday)
     } catch (e) {
       console.log(e.response?.data?.message);
     }
@@ -49,6 +56,7 @@ export default class BudgetStore {
       this.setBalance(response.data.balance);
       this.setIncomes(response.data.incomes);
       this.setExpenses(response.data.expenses);
+      this.setExpensesToday(response.data.expensesToday)
     } catch (e) {
       console.log(e.response?.data?.message);
     }

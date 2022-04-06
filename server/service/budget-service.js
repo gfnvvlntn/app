@@ -10,6 +10,17 @@ class BudgetService {
     return BudgetModel.find({ user: userId, balance: { $lt: 0 } });
   }
 
+  async getExpensesToday(userId) {
+    let date = new Date();
+    const expensesListToday = await BudgetModel.find({
+      user: userId,
+      balance: { $lt: 0 },
+      creationDate: { $gte: date.setHours(0) },
+    });
+
+    return expensesListToday.reduce((acc, item) => acc + item.balance, 0);
+  }
+
   async getBalance(userId) {
     const budget = await BudgetModel.find({ user: userId }).exec();
     if (!budget) {
@@ -21,8 +32,10 @@ class BudgetService {
     const balance = budget.reduce((acc, item) => acc + item.balance, 0);
     const expenses = await this.getExpenses(userId);
     const incomes = await this.getIncomes(userId);
+    const expensesToday = await this.getExpensesToday(userId);
 
-    return { balance, expenses, incomes };
+
+    return { balance, expenses, incomes, expensesToday };
   }
 
   async createAction(userId, action) {
@@ -35,6 +48,7 @@ class BudgetService {
     await BudgetModel.create({
       balance: action,
       user: userId,
+      creationDate: Date.now(),
     });
 
     const balance = await this.getBalance(userId);
