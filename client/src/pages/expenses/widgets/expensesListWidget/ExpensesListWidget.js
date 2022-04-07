@@ -5,12 +5,10 @@ import ExpensesItemWidget from "./ExpensesItemWidget";
 
 import { ReactComponent as IconFilter } from "assets/image/icons/icon-filter.svg";
 import { observer } from "mobx-react-lite";
-import { Typography } from "../../../../components/base";
+import { Typography } from "components/base";
 
 const ExpensesListWidget = () => {
   const { budgetStore } = useContext(Context);
-
-    console.log(budgetStore.budget)
 
   return (
     <ExpensesListContainer>

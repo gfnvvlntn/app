@@ -3,10 +3,21 @@ import BudgetService from "services/budgetService";
 
 export default class BudgetStore {
   budget = {
-    balance : 0,
+    balance: 0,
     incomes: [],
     expenses: [],
-    expensesToday: 0
+    expensesPerPeriod: {
+      expensesToday: 0,
+      expensesToWeek: 0,
+      expensesToMonth: 0,
+      expensesToYear: 0,
+    },
+    incomesPerPeriod: {
+      incomesToday: 0,
+      incomesToWeek: 0,
+      incomesToMonth: 0,
+      incomesToYear: 0,
+    },
   };
 
   constructor() {

@@ -9,7 +9,7 @@ import {
   Typography,
   TypographyVariant,
 } from "components/base";
-import { Context } from "../../../index";
+import { Context } from "index";
 import {observer} from "mobx-react-lite";
 
 const ExpensesWidget = () => {
@@ -23,7 +23,7 @@ const ExpensesWidget = () => {
         </Typography>
         <HomeBalanceLine>
           <Typography variant={TypographyVariant.h1}>
-            {budgetStore.budget.expensesToday}
+            {budgetStore.budget.expensesPerPeriod.expensesToday}
           </Typography>
           <IconRuble />
         </HomeBalanceLine>
