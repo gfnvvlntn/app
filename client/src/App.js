@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   useEffect(async () => {
-    await budgetStore.getBalance();
+    await budgetStore.getBudget();
   }, []);
 
   return (

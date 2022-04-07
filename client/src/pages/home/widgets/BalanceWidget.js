@@ -32,7 +32,7 @@ const BalanceWidget = () => {
         <HomeBalanceLine>
           <IconRuble />
           <Typography variant={TypographyVariant.h1}>
-            {budgetStore.balance}
+            {budgetStore.budget.balance}
           </Typography>
         </HomeBalanceLine>
       </HomeBalance>

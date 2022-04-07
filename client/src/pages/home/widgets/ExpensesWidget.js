@@ -23,7 +23,7 @@ const ExpensesWidget = () => {
         </Typography>
         <HomeBalanceLine>
           <Typography variant={TypographyVariant.h1}>
-            {budgetStore.expensesToday}
+            {budgetStore.budget.expensesToday}
           </Typography>
           <IconRuble />
         </HomeBalanceLine>

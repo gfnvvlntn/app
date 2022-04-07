@@ -5,7 +5,7 @@ import IncomesItemWidget from "./IncomesItemWidget";
 
 import { ReactComponent as IconFilter } from "assets/image/icons/icon-filter.svg";
 import { observer } from "mobx-react-lite";
-import {Typography} from "components/base";
+import { Typography } from "components/base";
 
 const IncomesListWidget = () => {
   const { budgetStore } = useContext(Context);
@@ -19,7 +19,7 @@ const IncomesListWidget = () => {
         <IncomesFilterButton>Месяц</IncomesFilterButton>
       </IncomesFilter>
       <IncomesList>
-        {budgetStore.incomes.map((income) => (
+        {budgetStore.budget.incomes.map((income) => (
           <IncomesItemWidget key={income._id} income={income} />
         ))}
       </IncomesList>
