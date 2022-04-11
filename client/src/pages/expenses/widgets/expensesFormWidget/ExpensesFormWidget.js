@@ -1,18 +1,30 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
-
 import { FormProvider, useForm } from "react-hook-form";
 import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import { Button, ButtonVariant, Input } from "components/base";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+
+const defaultSchema = yup.object().shape({
+  expense: yup.number().positive().required("Поля обезательно для заполнения"),
+});
 
 const ExpensesFormWidget = () => {
   const { budgetStore } = useContext(Context);
 
-  const form = useForm();
+  const form = useForm({
+    resolver: yupResolver(defaultSchema),
+    defaultValues: {
+      expense : ''
+    }
+  });
 
   const onSubmitHandler = form.handleSubmit(async (value) => {
     await budgetStore.createAction(value.expense * -1);
+    form.resetField('expense')
   });
 
   return (
