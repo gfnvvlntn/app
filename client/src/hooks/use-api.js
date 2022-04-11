@@ -22,9 +22,7 @@ api.interceptors.response.use((config) => {
             const response = await axios.get(`${BASE_URL}/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
             return api.request(originRequest)
-        }catch (e) {
-            console.log('Не авторизован')
-        }
+        }catch (e) {}
     }
 
     throw error

@@ -1,19 +1,24 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 
-import {Context} from "index";
-import {Typography, TypographyVariant} from "../../base";
+import { Context } from "index";
+import { Typography, TypographyVariant } from "../../base";
+import { observer } from "mobx-react-lite";
 
 const HeaderMessage = ({ title }) => {
-    const { authStore } = useContext(Context);
+  const { authStore } = useContext(Context);
 
-
-    return (
+  return (
     <>
       <HeaderMessageContainer>
         {authStore.message && <MessageError>{authStore.message}</MessageError>}
       </HeaderMessageContainer>
-      <HeaderTitle variant={TypographyVariant.h2}>{title}</HeaderTitle>
+      <HeaderTitle
+        variant={TypographyVariant.h2}
+        messageError={authStore.message}
+      >
+        {title}
+      </HeaderTitle>
       <HeaderMessageLine messageError={authStore.message} />
     </>
   );
@@ -21,7 +26,7 @@ const HeaderMessage = ({ title }) => {
 
 HeaderMessage.displayName = "HeaderMessage";
 
-export default HeaderMessage;
+export default observer(HeaderMessage);
 
 const HeaderMessageLine = styled("div")(
   ({ theme, messageError }) => css`
@@ -36,9 +41,12 @@ const HeaderMessageLine = styled("div")(
 
 const HeaderMessageContainer = styled("div")(({}) => css``);
 
-const HeaderTitle = styled(Typography)`
-  margin-top: 20px;
-`;
+const HeaderTitle = styled(Typography)(
+  ({ theme, messageError }) => css`
+    color: ${messageError ? theme.button.secondary : theme.button.primary};
+    margin-top: 20px;
+  `
+);
 
 const MessageError = styled("div")(
   ({ theme }) => css`

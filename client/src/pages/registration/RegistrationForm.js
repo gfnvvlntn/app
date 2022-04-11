@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
-import { Context } from "index";
 import { observer } from "mobx-react-lite";
 
 import { FormProvider, useForm } from "react-hook-form";
@@ -12,7 +11,6 @@ import {Button, ButtonVariant, Input} from "components/base";
 
 
 const RegistrationForm = ({ onSubmit }) => {
-  const { authStore } = useContext(Context);
 
   const { defaultSchema, defaultValues } = useFormSchema();
 
@@ -24,9 +22,6 @@ const RegistrationForm = ({ onSubmit }) => {
   const onSubmitHandler = form.handleSubmit(
     (values) => {
       onSubmit(values);
-    },
-    (errors) => {
-      authStore.setMessage(Object.entries(errors)[0][1].message);
     }
   );
 
@@ -36,9 +31,9 @@ const RegistrationForm = ({ onSubmit }) => {
         <Container>
           <HeaderMessage title={"Регистрация на платформе"} />
           <Content>
-            <Input name={"email"} placeholder={"Почта"} />
-            <Input name={"password"} placeholder={"Пароль"} />
-            <Input name={"repeatPassword"} placeholder={"Повторить пароль"} />
+            <Input name={"email"} label={"Почта"} />
+            <Input name={"password"} label={"Пароль"} />
+            <Input name={"repeatPassword"} label={"Повторить пароль"} />
             <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
               Регистрация
             </Button>
@@ -76,7 +71,7 @@ const Content = styled("div")(
     background-color: ${theme.color.main};
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     border-radius: 12px;
   `
 );

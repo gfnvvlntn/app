@@ -9,7 +9,10 @@ import * as yup from "yup";
 
 
 const defaultSchema = yup.object().shape({
-  expense: yup.number().positive().required("Поля обезательно для заполнения"),
+  expense: yup
+      .string()
+      .required("Поля обезательно для заполнения")
+      .matches(/^\d+$/, "Поля может содержать только цифры"),
 });
 
 const ExpensesFormWidget = () => {
@@ -30,7 +33,7 @@ const ExpensesFormWidget = () => {
   return (
     <ExpensesFormContainer>
       <FormProvider {...form}>
-        <Input name={"expense"} placeholder={"добавить расходы"} />
+        <Input name={"expense"} label={"Расходы"} />
         <Button variant={ButtonVariant.SECONDARY} onClick={onSubmitHandler}>
           Добавить
         </Button>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 import { FormProvider, useForm } from "react-hook-form";
@@ -6,13 +6,10 @@ import useFormSchema from "./LoginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import HeaderMessage from "components/composite/header/HeaderMessage";
-import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import { Button, ButtonVariant, Input } from "components/base";
 
 const LoginForm = ({ onSubmit }) => {
-  const { authStore } = useContext(Context);
-
   const { defaultSchema, defaultValues } = useFormSchema();
 
   const form = useForm({
@@ -20,22 +17,17 @@ const LoginForm = ({ onSubmit }) => {
     defaultValues: defaultValues,
   });
 
-  const onSubmitHandler = form.handleSubmit(
-    (values) => {
-      onSubmit(values);
-    },
-    (errors) => {
-      authStore.setMessage(Object.entries(errors)[0][1].message);
-    }
-  );
+  const onSubmitHandler = form.handleSubmit((values) => {
+    onSubmit(values);
+  });
   return (
     <FormProvider {...form}>
       <Layout>
         <Container>
           <HeaderMessage title={"Вход"} />
           <Content>
-            <Input placeholder={"Почта"} name={"email"} />
-            <Input placeholder={"Пароль"} name={"password"} />
+            <Input label={"Почта"} name={"email"} />
+            <Input label={"Пароль"} name={"password"} />
             <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
               Войти
             </Button>
@@ -73,7 +65,7 @@ const Content = styled("div")(
     background-color: ${theme.color.main};
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     border-radius: 12px;
   `
 );

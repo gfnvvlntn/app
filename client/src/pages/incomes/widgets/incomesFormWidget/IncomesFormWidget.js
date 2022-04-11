@@ -8,7 +8,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const defaultSchema = yup.object().shape({
-  income: yup.number().positive().required("Поля обезательно для заполнения"),
+  income: yup
+    .string()
+    .required("Поля обезательно для заполнения")
+    .matches(/^\d+$/, "Поля может содержать только цифры"),
 });
 
 const IncomesFormWidget = () => {
@@ -29,7 +32,7 @@ const IncomesFormWidget = () => {
   return (
     <IncomesFormContainer>
       <FormProvider {...form}>
-        <Input name={"income"} placeholder={"добавить доходы"} />
+        <Input name={"income"} label={'Доходы'}/>
         <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
           Добавить
         </Button>

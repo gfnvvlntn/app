@@ -5,6 +5,7 @@ export const theme = {
     main: "#1c1c24",
     second: "#15161b",
     third: "#232429",
+    four: "#202a36",
     border: "white",
     red: "#d85050",
     green: "#598C82",

@@ -18,8 +18,10 @@ function App() {
   }, []);
 
   useEffect(async () => {
-    await budgetStore.getBudget();
-  }, []);
+    if (authStore.isAuth) {
+      await budgetStore.getBudget();
+    }
+  }, [authStore.isAuth]);
 
   return (
     <BrowserRouter>

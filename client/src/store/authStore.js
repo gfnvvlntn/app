@@ -38,6 +38,10 @@ export default class AuthStore {
   async login(email, password) {
     try {
       const response = await AuthService.login(email, password);
+      if (response.data.error) {
+        this.setMessage(response.data.message);
+        return;
+      }
       this.saveUser(response);
     } catch (e) {
       this.setMessage(e.response?.data?.message);
@@ -47,6 +51,10 @@ export default class AuthStore {
   async registration(email, password) {
     try {
       const response = await AuthService.registration(email, password);
+      if (response.data.error) {
+        this.setMessage(response.data.message);
+        return;
+      }
       this.saveUser(response);
     } catch (e) {
       this.setMessage(e.response?.data?.message);
