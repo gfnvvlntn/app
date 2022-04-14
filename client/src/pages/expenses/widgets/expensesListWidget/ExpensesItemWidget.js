@@ -7,7 +7,7 @@ import styled, { css } from "styled-components";
 import { ReactComponent as IconDelete } from "assets/image/icons/icon-delete.svg";
 import { ReactComponent as IconEdit } from "assets/image/icons/icon-edit.svg";
 import { observer } from "mobx-react-lite";
-import { Context } from "index";
+import { Context } from "root";
 import { Typography, TypographyVariant } from "components/base";
 
 const ExpensesItemWidget = ({ expense }) => {

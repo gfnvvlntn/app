@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { Context } from "index";
+import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import { BrowserRouter } from "react-router-dom";
 import Pages from "pages/Pages";
@@ -11,15 +11,15 @@ import PageBar from "components/composite/pagebar/PageBar";
 function App() {
   const { authStore, budgetStore } = useContext(Context);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (localStorage.getItem("token")) {
-      await authStore.checkAuth();
+      authStore.checkAuth();
     }
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (authStore.isAuth) {
-      await budgetStore.getBudget();
+      budgetStore.getBudget();
     }
   }, [authStore.isAuth]);
 

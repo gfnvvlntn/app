@@ -9,7 +9,7 @@ import {
   Typography,
   TypographyVariant,
 } from "components/base";
-import { Context } from "../../../index";
+import {Context} from "root";
 import { observer } from "mobx-react-lite";
 
 const IncomesWidget = () => {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Typography, TypographyVariant } from "components/base";
-import { Context } from "index";
+import { Context } from "root";
 
 const Statistic = () => {
   const { budgetStore } = useContext(Context);

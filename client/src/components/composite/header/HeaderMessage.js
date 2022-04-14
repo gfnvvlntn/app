@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 
-import { Context } from "index";
+import { Context } from "root";
 import { Typography, TypographyVariant } from "../../base";
 import { observer } from "mobx-react-lite";
 
@@ -14,7 +14,7 @@ const HeaderMessage = ({ title }) => {
         {authStore.message && <MessageError>{authStore.message}</MessageError>}
       </HeaderMessageContainer>
       <HeaderTitle
-        variant={TypographyVariant.h2}
+        variant={TypographyVariant.h1}
         messageError={authStore.message}
       >
         {title}
@@ -44,7 +44,6 @@ const HeaderMessageContainer = styled("div")(({}) => css``);
 const HeaderTitle = styled(Typography)(
   ({ theme, messageError }) => css`
     color: ${messageError ? theme.button.secondary : theme.button.primary};
-    margin-top: 20px;
   `
 );
 

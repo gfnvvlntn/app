@@ -1,12 +1,16 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import Typography, { TypographyVariant } from "../typography/Typography";
 
 import { ReactComponent as IconArrow } from "assets/image/icons/icon-dropdown.svg";
+import { Typography, TypographyVariant } from "../index";
+import useOnClickOutside from "../../../hooks/use-onclick-outside";
 
 const Dropdown = ({ option = [], placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const dropdownRef = useRef();
+  useOnClickOutside(dropdownRef, () => setIsOpen(false));
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -18,14 +22,14 @@ const Dropdown = ({ option = [], placeholder }) => {
   }, []);
 
   return (
-    <DropdownContainer>
+    <DropdownContainer ref={dropdownRef}>
       <DropdownHeader onClick={toggleDropdown}>
         <Typography variant={TypographyVariant.text2}>
           {selectedItem
             ? option.find((item) => item.id === selectedItem).label
             : placeholder}
         </Typography>
-        <IconContainer isOpen={isOpen}>
+        <IconContainer>
           <IconArrow />
         </IconContainer>
       </DropdownHeader>
@@ -49,16 +53,17 @@ export default Dropdown;
 const DropdownContainer = styled("div")(
   ({ theme }) => css`
     width: 300px;
-    border: 1px solid ${theme.button.primary};
-    border-radius: 12px;
+    border: 1px solid ${theme.color.four};
+    border-radius: 0.428571rem;
     overflow: hidden;
+    background-color: ${theme.color.four};
   `
 );
 
 const DropdownHeader = styled("div")(
   () => css`
     cursor: pointer;
-    padding: 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -66,23 +71,24 @@ const DropdownHeader = styled("div")(
 );
 
 const IconContainer = styled("div")(
-  ({ isOpen }) => css`
-    transform: ${isOpen ? "rotate(0deg)" : "rotate(90deg)"};
+  () => css`
+    transform: rotate(90deg);
     transition: all 0.2s ease-in-out;
   `
 );
 
 const DropdownBody = styled("div")(
   ({ theme, isOpen }) => css`
-    border-top: 1px solid ${theme.button.primary};
+    border-top: 1px solid ${theme.color.second};
     display: ${isOpen ? "block" : "none"};
   `
 );
 
 const DropdownItem = styled("div")(
   ({ theme }) => css`
-    padding: 15px;
+    padding: 15px 10px;
     cursor: pointer;
+
     &:hover {
       background-color: ${theme.color.main};
     }

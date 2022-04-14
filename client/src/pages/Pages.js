@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Registration from "./registration/Registration";
 import Login from "./login/Login";
-import { Context } from "../index";
+import {Context} from "root";
 import Home from "./home/Home";
 import { observer } from "mobx-react-lite";
 import Income from "./incomes/Incomes";

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Context } from "index";
 import { observer } from "mobx-react-lite";
 import styled, { css } from "styled-components";
 
@@ -10,13 +9,14 @@ import { ReactComponent as IconLogo } from "assets/image/icons/icon-logo.svg";
 import { ReactComponent as IconWarning } from "assets/image/icons/icon-warning.svg";
 import { ReactComponent as IconLogout } from "assets/image/icons/icon-nav-logout.svg";
 import NavbarLink from "./NavbarLink";
+import { Context } from "root";
 
 const Navbar = () => {
   const { authStore } = useContext(Context);
 
   const onLogout = async () => {
-     await authStore.logout()
-  }
+    await authStore.logout();
+  };
 
   if (!authStore.isAuth) {
     return (
@@ -42,11 +42,7 @@ const Navbar = () => {
         <NavbarGroupLink>
           <NavbarLine />
           <NavbarLink to={"/setting"} icon={<IconSettings />} />
-          <NavbarLink
-            to={"/login"}
-            icon={<IconLogout />}
-            onClick={onLogout}
-          />
+          <NavbarLink to={"/login"} icon={<IconLogout />} onClick={onLogout} />
         </NavbarGroupLink>
       </NavbarContainer>
     );

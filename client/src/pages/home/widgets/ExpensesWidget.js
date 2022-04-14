@@ -9,8 +9,8 @@ import {
   Typography,
   TypographyVariant,
 } from "components/base";
-import { Context } from "index";
-import {observer} from "mobx-react-lite";
+import { Context } from "root";
+import { observer } from "mobx-react-lite";
 
 const ExpensesWidget = () => {
   const { budgetStore } = useContext(Context);

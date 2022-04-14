@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { FormProvider, useForm } from "react-hook-form";
-import { Context } from "index";
+import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import { Button, ButtonVariant, Input } from "components/base";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-
 const defaultSchema = yup.object().shape({
   expense: yup
-      .string()
-      .required("Поля обезательно для заполнения")
-      .matches(/^\d+$/, "Поля может содержать только цифры"),
+    .string()
+    .required("Поля обезательно для заполнения")
+    .matches(/^\d+$/, "Поля может содержать только цифры"),
 });
 
 const ExpensesFormWidget = () => {
@@ -21,13 +20,13 @@ const ExpensesFormWidget = () => {
   const form = useForm({
     resolver: yupResolver(defaultSchema),
     defaultValues: {
-      expense : ''
-    }
+      expense: "",
+    },
   });
 
   const onSubmitHandler = form.handleSubmit(async (value) => {
     await budgetStore.createAction(value.expense * -1);
-    form.resetField('expense')
+    form.resetField("expense");
   });
 
   return (

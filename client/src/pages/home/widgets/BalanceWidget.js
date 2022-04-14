@@ -4,14 +4,12 @@ import { theme } from "theme/theme";
 import Moment from "react-moment";
 import { ReactComponent as IconRuble } from "assets/image/icons/icon-ruble.svg";
 import styled, { css } from "styled-components";
-import { Context } from "index";
-import {observer} from "mobx-react-lite";
-import {Typography, TypographyVariant} from "components/base";
-
+import { Context } from "root";
+import { observer } from "mobx-react-lite";
+import { Typography, TypographyVariant } from "components/base";
 
 const BalanceWidget = () => {
   const { budgetStore } = useContext(Context);
-
 
   return (
     <HomeBalanceWidget>
@@ -20,9 +18,9 @@ const BalanceWidget = () => {
           Дата
         </Typography>
         <Typography variant={TypographyVariant.h2}>
-            <Moment format="DD" className={'time'}/>
-            <Moment format="MM" className={'time'}/>
-            <Moment format="YY" className={'time'}/>
+          <Moment format="DD" className={"time"} />
+          <Moment format="MM" className={"time"} />
+          <Moment format="YY" className={"time"} />
         </Typography>
       </HomeBalance>
       <HomeBalance>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { useForm, FormProvider } from "react-hook-form";
-import { Context } from "index";
+import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import { Button, ButtonVariant, Input } from "components/base";
 import * as yup from "yup";
@@ -32,7 +32,7 @@ const IncomesFormWidget = () => {
   return (
     <IncomesFormContainer>
       <FormProvider {...form}>
-        <Input name={"income"} label={'Доходы'}/>
+        <Input name={"income"} label={"Доходы"} />
         <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
           Добавить
         </Button>
