@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { theme } from "theme/theme";
-import { ReactComponent as IconRuble } from "assets/image/icons/icon-ruble.svg";
-import styled, { css } from "styled-components";
+import { IconRuble } from "assets/image/icons/index";
+import styled from "styled-components";
 import {
   Button,
   ButtonVariant,
@@ -11,12 +11,13 @@ import {
 } from "components/base";
 import {Context} from "root";
 import { observer } from "mobx-react-lite";
+import HomeWidgetContainer from "../components/HomeWidgetContainer";
 
 const IncomesWidget = () => {
   const { budgetStore } = useContext(Context);
   const navigate = useNavigate();
   return (
-    <HomeIncomeWidget>
+    <HomeWidgetContainer>
       <HomeIncomeTitle>
         <Typography variant={TypographyVariant.h2} color={theme.color.green}>
           Доход за месяц
@@ -34,27 +35,13 @@ const IncomesWidget = () => {
       >
         Добавить доходы
       </Button>
-    </HomeIncomeWidget>
+    </HomeWidgetContainer>
   );
 };
 
 IncomesWidget.displayName = "IncomesWidget";
 
 export default observer(IncomesWidget);
-
-const HomeIncomeWidget = styled("div")(
-  ({ theme }) => css`
-    background-color: ${theme.color.second};
-    width: 400px;
-    height: 200px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 12px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  `
-);
 
 const HomeIncomeTitle = styled("div")`
   display: flex;

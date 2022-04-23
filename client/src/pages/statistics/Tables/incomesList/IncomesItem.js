@@ -2,14 +2,12 @@ import React, { useContext } from "react";
 import { theme } from "theme/theme";
 import Moment from "react-moment";
 import styled, { css } from "styled-components";
-
-import { ReactComponent as IconDelete } from "assets/image/icons/icon-delete.svg";
-import { ReactComponent as IconEdit } from "assets/image/icons/icon-edit.svg";
+import { IconDelete, IconEdit } from "assets/image/icons";
 import { observer } from "mobx-react-lite";
 import { Context } from "root";
 import { Typography, TypographyVariant } from "components/base";
 
-const IncomesItemWidget = ({ income }) => {
+const IncomesItem = ({ income }) => {
   const { budgetStore } = useContext(Context);
 
   const onDeleteAction = async () => {
@@ -33,9 +31,9 @@ const IncomesItemWidget = ({ income }) => {
   );
 };
 
-IncomesItemWidget.displayName = "IncomesItemWidget";
+IncomesItem.displayName = "IncomesItem";
 
-export default observer(IncomesItemWidget);
+export default observer(IncomesItem);
 
 const IncomesItemContainer = styled("div")(
   ({ theme }) => css`

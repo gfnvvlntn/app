@@ -2,6 +2,8 @@ import React from "react";
 import MainLayout from "components/composite/layouts/MainLayout";
 import { Tab, Tabs } from "components/composite/tabs";
 import Statistic from "./Statistic/Statistic";
+import IncomesTable from "./Tables/IncomesTable";
+import ExpensesTable from "./Tables/ExpensesTable";
 
 const Statistics = () => {
   return (
@@ -13,8 +15,11 @@ const Statistics = () => {
         <Tab label={"График"}>
           <div>График</div>
         </Tab>
-        <Tab label={"Списки"}>
-          <div>Списки</div>
+        <Tab label={"Доходы"}>
+          <IncomesTable />
+        </Tab>
+        <Tab label={"Расходы"}>
+          <ExpensesTable />
         </Tab>
       </Tabs>
     </MainLayout>

@@ -1,28 +1,28 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { Context } from "root";
-import ExpensesItemWidget from "./ExpensesItemWidget";
+import IncomesItemWidget from "./IncomesItem";
 import { observer } from "mobx-react-lite";
 
-const ExpensesListWidget = () => {
+const IncomesList = () => {
   const { budgetStore } = useContext(Context);
 
   return (
-    <ExpensesListContainer>
-      <ExpensesList>
-        {budgetStore.budget.expenses.map((expense) => (
-          <ExpensesItemWidget key={expense._id} expense={expense} />
+    <IncomesListContainer>
+      <List>
+        {budgetStore.budget.incomes.map((income) => (
+          <IncomesItemWidget key={income._id} income={income} />
         ))}
-      </ExpensesList>
-    </ExpensesListContainer>
+      </List>
+    </IncomesListContainer>
   );
 };
 
-ExpensesListWidget.displayName = "ExpensesListWidget";
+IncomesList.displayName = "IncomesList";
 
-export default observer(ExpensesListWidget);
+export default observer(IncomesList);
 
-const ExpensesListContainer = styled("div")(
+const IncomesListContainer = styled("div")(
   ({ theme }) => css`
     background-color: ${theme.color.second};
     width: 60%;
@@ -31,7 +31,7 @@ const ExpensesListContainer = styled("div")(
   `
 );
 
-const ExpensesList = styled("div")(
+const List = styled("div")(
   ({ theme }) => css`
     height: 496px;
     overflow-y: auto;

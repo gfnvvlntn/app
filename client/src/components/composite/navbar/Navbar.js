@@ -1,13 +1,7 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import styled, { css } from "styled-components";
-
-import { ReactComponent as IconSettings } from "assets/image/icons/icon-nav-settings.svg";
-import { ReactComponent as IconLogin } from "assets/image/icons/icon-nav-login.svg";
-import { ReactComponent as IconRegistration } from "assets/image/icons/icon-nav-registration.svg";
-import { ReactComponent as IconLogo } from "assets/image/icons/icon-logo.svg";
-import { ReactComponent as IconWarning } from "assets/image/icons/icon-warning.svg";
-import { ReactComponent as IconLogout } from "assets/image/icons/icon-nav-logout.svg";
+import {IconLogin, IconLogo, IconWarning, IconLogout, IconSettings, IconRegistration} from "assets/image/icons";
 import NavbarLink from "./NavbarLink";
 import { Context } from "root";
 
@@ -54,10 +48,9 @@ Navbar.displayName = "Navbar";
 export default observer(Navbar);
 
 const NavbarContainer = styled("div")(
-  ({ theme }) => css`
+  () => css`
     width: 80px;
     min-height: 100vh;
-    // background-color: ${theme.color.second};
     display: flex;
     justify-content: space-between;
     align-items: center;

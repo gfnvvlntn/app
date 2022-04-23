@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Typography, TypographyVariant} from "../../components/base";
+import {Typography, TypographyVariant} from "components/base";
 
 const LoginTitle = () => {
     return (
