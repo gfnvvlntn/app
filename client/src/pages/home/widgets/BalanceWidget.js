@@ -7,7 +7,6 @@ import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import { Typography, TypographyVariant } from "components/base";
 import HomeWidgetContainer from "../components/HomeWidgetContainer";
-import {IconRuble} from "assets/image/icons";
 
 const BalanceWidget = () => {
   const { budgetStore } = useContext(Context);
@@ -29,9 +28,8 @@ const BalanceWidget = () => {
           Баланс
         </Typography>
         <HomeBalanceLine>
-          <IconRuble />
           <Typography variant={TypographyVariant.h1}>
-            {budgetStore.budget.balance}
+            {budgetStore.balance}
           </Typography>
         </HomeBalanceLine>
       </HomeBalance>

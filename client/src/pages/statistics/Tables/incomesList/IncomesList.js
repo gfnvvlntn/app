@@ -10,7 +10,7 @@ const IncomesList = () => {
   return (
     <IncomesListContainer>
       <List>
-        {budgetStore.budget.incomes.map((income) => (
+        {budgetStore.incomes.map((income) => (
           <IncomesItemWidget key={income._id} income={income} />
         ))}
       </List>

@@ -5,37 +5,37 @@ import { Context } from "root";
 
 const Statistic = () => {
   const { budgetStore } = useContext(Context);
-
+  console.log(budgetStore.expensesPerPeriod)
   return (
     <>
       <div>
         <Typography variant={TypographyVariant.h1}>Доходы</Typography>
         <Typography variant={TypographyVariant.h3}>
-          За день: {budgetStore.budget.incomesPerPeriod.incomesToday}
+          За день: {budgetStore.incomesPerPeriod.incomesToday}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За неделю: {budgetStore.budget.incomesPerPeriod.incomesToWeek}
+          За неделю: {budgetStore.incomesPerPeriod.incomesToWeek}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За месяц: {budgetStore.budget.incomesPerPeriod.incomesToMonth}
+          За месяц: {budgetStore.incomesPerPeriod.incomesToMonth}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За год: {budgetStore.budget.incomesPerPeriod.incomesToYear}
+          За год: {budgetStore.incomesPerPeriod.incomesToYear}
         </Typography>
       </div>
       <div>
         <Typography variant={TypographyVariant.h1}>Расходы</Typography>
         <Typography variant={TypographyVariant.h3}>
-          За день: {budgetStore.budget.expensesPerPeriod.expensesToday}
+          За день: {budgetStore.expensesPerPeriod.expensesToday}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За неделю: {budgetStore.budget.expensesPerPeriod.expensesToWeek}
+          За неделю: {budgetStore.expensesPerPeriod.expensesToWeek}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За месяц: {budgetStore.budget.expensesPerPeriod.expensesToMonth}
+          За месяц: {budgetStore.expensesPerPeriod.expensesToMonth}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За год: {budgetStore.budget.expensesPerPeriod.expensesToYear}
+          За год: {budgetStore.expensesPerPeriod.expensesToYear}
         </Typography>
       </div>
     </>

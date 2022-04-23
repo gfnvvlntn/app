@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { theme } from "theme/theme";
-import { IconRuble } from "assets/image/icons/index";
 import styled from "styled-components";
 import {
   Button,
@@ -24,9 +23,8 @@ const ExpensesWidget = () => {
         </Typography>
         <HomeBalanceLine>
           <Typography variant={TypographyVariant.h1}>
-            {budgetStore.budget.expensesPerPeriod.expensesToday}
+            {budgetStore.expensesPerPeriod.expensesToday}
           </Typography>
-          <IconRuble />
         </HomeBalanceLine>
       </HomeExpensesTitle>
       <Button

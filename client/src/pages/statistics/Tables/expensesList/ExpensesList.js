@@ -10,7 +10,7 @@ const ExpensesList = () => {
   return (
     <ExpensesListContainer>
       <List>
-        {budgetStore.budget.expenses.map((expense) => (
+        {budgetStore.expenses.map((expense) => (
           <ExpensesItemWidget key={expense._id} expense={expense} />
         ))}
       </List>
