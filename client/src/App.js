@@ -9,7 +9,7 @@ import { theme } from "theme/theme";
 import PageBar from "components/composite/pagebar/PageBar";
 
 function App() {
-  const { authStore, budgetStore } = useContext(Context);
+  const { authStore, budgetStore, settingsStore } = useContext(Context);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -22,6 +22,12 @@ function App() {
       budgetStore.getBudget();
     }
   }, [authStore.isAuth]);
+
+  useEffect(() => {
+    if (authStore.isAuth) {
+      settingsStore.getSettings()
+    }
+  },[])
 
   return (
     <BrowserRouter>

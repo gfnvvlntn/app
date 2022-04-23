@@ -4,8 +4,15 @@ import styled, { css } from "styled-components";
 import { ReactComponent as IconArrow } from "assets/image/icons/icon-dropdown.svg";
 import { Typography, TypographyVariant } from "../index";
 import useOnClickOutside from "../../../hooks/use-onclick-outside";
+import { motion } from "framer-motion";
 
-const Dropdown = ({ option = [], placeholder }) => {
+const Dropdown = ({
+  option = [],
+  placeholder,
+  onChange,
+  defaultValue,
+  value,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -16,10 +23,23 @@ const Dropdown = ({ option = [], placeholder }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleItemClick = useCallback((id) => {
+  const handleItemClick = useCallback((id, value) => {
     selectedItem === id ? setSelectedItem(null) : setSelectedItem(id);
+    onChange && onChange(value);
     setIsOpen(false);
   }, []);
+
+  const collapseVariants = {
+    open: { opacity: 1, display: "block" },
+    closed: { opacity: 0, display: "none" },
+  };
+
+  const defaultSelected =
+    (defaultValue || value) && option?.length
+      ? option.find((item) =>
+          defaultValue ? item.value === defaultValue : item.value === value
+        )
+      : false;
 
   return (
     <DropdownContainer ref={dropdownRef}>
@@ -27,21 +47,30 @@ const Dropdown = ({ option = [], placeholder }) => {
         <Typography variant={TypographyVariant.text2}>
           {selectedItem
             ? option.find((item) => item.id === selectedItem).label
-            : placeholder}
+            : defaultSelected.label || placeholder}
         </Typography>
         <IconContainer>
           <IconArrow />
         </IconContainer>
       </DropdownHeader>
-      <DropdownBody isOpen={isOpen}>
-        {option.map((item) => (
-          <DropdownItem key={item.id} onClick={() => handleItemClick(item.id)}>
-            <Typography variant={TypographyVariant.text2}>
-              {item.label}
-            </Typography>
-          </DropdownItem>
-        ))}
-      </DropdownBody>
+      <motion.div
+        animate={isOpen ? "open" : "closed"}
+        variants={collapseVariants}
+        transition={{ duration: 0.15 }}
+      >
+        <DropdownList>
+          {option.map((item) => (
+            <DropdownItem
+              key={item.id}
+              onClick={() => handleItemClick(item.id, item.value)}
+            >
+              <Typography variant={TypographyVariant.text2}>
+                {item.label}
+              </Typography>
+            </DropdownItem>
+          ))}
+        </DropdownList>
+      </motion.div>
     </DropdownContainer>
   );
 };
@@ -55,7 +84,8 @@ const DropdownContainer = styled("div")(
     width: 300px;
     border: 1px solid ${theme.color.four};
     border-radius: 0.428571rem;
-    overflow: hidden;
+    position: relative;
+    backface-visibility: hidden;
     background-color: ${theme.color.four};
   `
 );
@@ -77,10 +107,52 @@ const IconContainer = styled("div")(
   `
 );
 
-const DropdownBody = styled("div")(
-  ({ theme, isOpen }) => css`
-    border-top: 1px solid ${theme.color.second};
-    display: ${isOpen ? "block" : "none"};
+const DropdownList = styled("div")(
+  ({ theme }) => css`
+    max-height: 240px;
+    border-radius: 0.428571rem;
+    background-color: ${theme.color.four};
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 5px);
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      /* 1 - скроллбар */
+      width: 4px;
+      height: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    &::-webkit-scrollbar-button {
+      /* 2 - кнопка */
+    }
+
+    &::-webkit-scrollbar-track {
+      /* 3 - трек */
+      width: 10px;
+      margin: 20px;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+      /* 4 - видимая часть трека */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      /* 5 - ползунок */
+      border-radius: 2px;
+      background-color: ${theme.button.primary};
+    }
+
+    &::-webkit-scrollbar-corner {
+      /* 6 - уголок */
+    }
+
+    &::-webkit-resizer {
+      /* 7 - изменение размеров */
+    }
   `
 );
 

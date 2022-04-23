@@ -1,6 +1,14 @@
 export const currency = (data) => {
-  return new Intl.NumberFormat("ru-RU", {
+  const locales = {
+    RUB: "ru-RU",
+    USD: "en-US",
+    EUR: "es-ES",
+    CNY: "zh",
+  };
+  const settings = JSON.parse(localStorage.getItem("settings"));
+
+  return new Intl.NumberFormat(locales[settings.currency], {
     style: "currency",
-    currency: "RUB",
+    currency: settings.currency,
   }).format(data);
 };
