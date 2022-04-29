@@ -5,10 +5,14 @@ export const currency = (data) => {
     EUR: "es-ES",
     CNY: "zh",
   };
-  const settings = JSON.parse(localStorage.getItem("settings"));
 
-  return new Intl.NumberFormat(locales[settings.currency], {
-    style: "currency",
-    currency: settings.currency,
-  }).format(data);
+  try {
+    const { currency } = JSON.parse(localStorage.getItem("settings"));
+    return new Intl.NumberFormat(locales[currency] || "ru-RU", {
+      style: "currency",
+      currency: currency || "RUB",
+    }).format(data);
+  } catch (e) {
+    console.log(e);
+  }
 };

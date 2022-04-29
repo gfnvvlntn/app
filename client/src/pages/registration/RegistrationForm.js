@@ -1,13 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { observer } from "mobx-react-lite";
-
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useFormSchema from "./RegistrationSchema";
-
 import HeaderMessage from "components/composite/header/HeaderMessage";
 import { Button, ButtonVariant, Input } from "components/base";
+import {ContextField, LabeledField} from "components/hoc";
+
+
+const InputLabeled = LabeledField(Input);
 
 const RegistrationForm = ({ onSubmit }) => {
   const { defaultSchema, defaultValues } = useFormSchema();
@@ -26,9 +28,21 @@ const RegistrationForm = ({ onSubmit }) => {
       <Container>
         <HeaderMessage title={"Регистрация на платформе"} />
         <Content>
-          <Input name={"email"} label={"Почта"} />
-          <Input name={"password"} label={"Пароль"} />
-          <Input name={"repeatPassword"} label={"Повторить пароль"} />
+          <ContextField
+            component={InputLabeled}
+            name={"email"}
+            label={"Почта"}
+          />
+          <ContextField
+            component={InputLabeled}
+            name={"password"}
+            label={"Пароль"}
+          />
+          <ContextField
+            component={InputLabeled}
+            name={"repeatPassword"}
+            label={"Повторить пароль"}
+          />
           <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
             Регистрация
           </Button>

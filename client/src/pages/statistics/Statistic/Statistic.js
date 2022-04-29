@@ -5,7 +5,6 @@ import { Context } from "root";
 
 const Statistic = () => {
   const { budgetStore } = useContext(Context);
-  console.log(budgetStore.expensesPerPeriod)
   return (
     <>
       <div>

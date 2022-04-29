@@ -1,25 +1,14 @@
 import React from "react";
-import { useFormContext } from "react-hook-form";
 import styled, { css } from "styled-components";
 
-const InputField = React.memo(
-  ({ register, formState, name, ...rest }) => {
-    return <Field {...register(name)} {...rest} />;
-  },
-  (prevProps, nextProps) =>
-    prevProps.formState.isDirty === nextProps.formState.isDirty
-);
-
-const Input = ({ name, label, ...rest }) => {
-  const method = useFormContext();
-  const error = method.formState.errors[name];
-  return (
+const Input = ({ name, onChange, error }) => {
+    return (
     <FieldWrapper error={error}>
-      <InputField {...method} name={name} {...rest} />
-      <Label error={error}>{error ? error.message : label}</Label>
+      <Field  name={name} onChange={onChange}/>
     </FieldWrapper>
   );
 };
+
 
 Input.displayName = "Input";
 
@@ -27,7 +16,6 @@ export default Input;
 
 const FieldWrapper = styled("div")(
   ({ error, theme }) => css`
-    position: relative;
     width: 100%;
     border: 1px solid ${error ? theme.color.red : theme.color.four};
     display: flex;
@@ -50,12 +38,3 @@ const Field = styled("input")`
     opacity: 0.7;
   }
 `;
-
-const Label = styled("div")(
-  ({ error, theme }) => css`
-    color: ${error ? theme.color.red : theme.color.border};
-    position: absolute;
-    font-size: 10px;
-    top: -20px;
-  `
-);

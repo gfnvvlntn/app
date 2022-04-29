@@ -1,13 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
 import { FormProvider, useForm } from "react-hook-form";
 import useFormSchema from "./LoginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import HeaderMessage from "components/composite/header/HeaderMessage";
 import { observer } from "mobx-react-lite";
 import { Button, ButtonVariant, Input } from "components/base";
+import {ContextField, LabeledField} from "components/hoc";
+
+const InputLabeled = LabeledField(Input);
+
 
 const LoginForm = ({ onSubmit }) => {
   const { defaultSchema, defaultValues } = useFormSchema();
@@ -25,8 +27,8 @@ const LoginForm = ({ onSubmit }) => {
       <Container>
         <HeaderMessage title={"Вход"} />
         <Content>
-          <Input label={"Почта"} name={"email"} />
-          <Input label={"Пароль"} name={"password"} />
+          <ContextField component={InputLabeled} label={"Почта"} name={"email"} />
+          <ContextField component={InputLabeled} label={"Пароль"} name={"password"} />
           <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
             Войти
           </Button>

@@ -12,6 +12,7 @@ const Dropdown = ({
   onChange,
   defaultValue,
   value,
+  error,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -40,9 +41,8 @@ const Dropdown = ({
           defaultValue ? item.value === defaultValue : item.value === value
         )
       : false;
-
   return (
-    <DropdownContainer ref={dropdownRef}>
+    <DropdownContainer error={error} ref={dropdownRef}>
       <DropdownHeader onClick={toggleDropdown}>
         <Typography variant={TypographyVariant.text2}>
           {selectedItem
@@ -80,9 +80,10 @@ Dropdown.displayName = "Dropdown";
 export default Dropdown;
 
 const DropdownContainer = styled("div")(
-  ({ theme }) => css`
-    width: 300px;
-    border: 1px solid ${theme.color.four};
+  ({ theme, error }) => css`
+    width: 100%;
+    max-height: 45px;
+    border: 1px solid ${error ? theme.color.red : theme.color.four};
     border-radius: 0.428571rem;
     position: relative;
     backface-visibility: hidden;
@@ -93,7 +94,7 @@ const DropdownContainer = styled("div")(
 const DropdownHeader = styled("div")(
   () => css`
     cursor: pointer;
-    padding: 10px;
+    padding: 7px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -158,7 +159,7 @@ const DropdownList = styled("div")(
 
 const DropdownItem = styled("div")(
   ({ theme }) => css`
-    padding: 15px 10px;
+    padding: 12px 14px;
     cursor: pointer;
 
     &:hover {
