@@ -41,4 +41,6 @@ router.get(
   CategoriesController.getCategories
 );
 
+router.post("/add-category", AuthMiddleware, CategoriesController.addCategory);
+
 module.exports = router;

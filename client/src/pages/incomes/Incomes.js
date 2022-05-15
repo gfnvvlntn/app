@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import MainLayout from "components/composite/layouts/MainLayout";
 import IncomesFormWidget from "./widgets/incomesFormWidget/IncomesFormWidget";
 import { Tab, Tabs } from "components/composite/tabs";
+import IncomeCategoriesWidget from "./widgets/incomesCategoriesWidget/IncomeCategoriesWidget";
 
 const Incomes = () => {
   return (
@@ -11,6 +12,7 @@ const Incomes = () => {
         <Tab label={"Доходы"}>
           <IncomesBody>
             <IncomesFormWidget />
+            <IncomeCategoriesWidget />
           </IncomesBody>
         </Tab>
       </Tabs>

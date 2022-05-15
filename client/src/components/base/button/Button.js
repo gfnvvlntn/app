@@ -20,9 +20,11 @@ const getVariantStyle = ({ theme, variant }) => {
       return css`
         color: ${theme.font.color};
         background-color: ${theme.button.primary};
+
         &:hover {
           opacity: 0.8;
         }
+
         &:active {
           color: ${theme.color.main};
           background-color: ${theme.font.color};
@@ -37,9 +39,11 @@ const getVariantStyle = ({ theme, variant }) => {
       return css`
         color: ${theme.font.color};
         background-color: ${theme.button.secondary};
+
         &:hover {
           opacity: 0.8;
         }
+
         &:active {
           color: ${theme.color.third};
           background-color: ${theme.font.color};
@@ -55,7 +59,12 @@ const getVariantStyle = ({ theme, variant }) => {
         width: 30px;
         background-color: inherit;
         padding: 0;
-      `
+
+        &:hover {
+          opacity: 0.8;
+          background-color: initial;
+        }
+      `;
     }
     default:
       return "";

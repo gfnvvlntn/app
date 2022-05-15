@@ -40,7 +40,9 @@ const Root = () => {
   }, []);
 
   useEffect(() => {
-    categoriesStore.getCategories();
+    if (authStore.isAuth) {
+      categoriesStore.getCategories();
+    }
   }, []);
 
   return (

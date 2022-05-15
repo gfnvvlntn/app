@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 
 import { ReactComponent as IconArrow } from "assets/image/icons/icon-dropdown.svg";
@@ -41,8 +41,8 @@ const Dropdown = ({
       : false;
 
   useEffect(() => {
-    if (value) setSelectedItem(option.find(item => item.value === value).id)
-  },[value])
+    if (value) setSelectedItem(option.find((item) => item.value === value)?.id);
+  }, [value]);
 
   return (
     <DropdownContainer error={error} ref={dropdownRef}>

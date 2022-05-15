@@ -41,7 +41,6 @@ BalanceWidget.displayName = "BalanceWidget";
 
 export default observer(BalanceWidget);
 
-
 const HomeBalance = styled("div")`
   display: flex;
   align-items: center;

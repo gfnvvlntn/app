@@ -33,25 +33,27 @@ const IncomesFormWidget = () => {
   return (
     <IncomesFormContainer>
       <FormProvider {...form}>
-        <ContextField
-          component={InputLabeled}
-          name={"income"}
-          label={"Доходы"}
-        />
-        <ContextField
-          component={DropdownLabeled}
-          label={"Категория"}
-          name={"category"}
-          option={categoriesStore.optionCategoriesIncome}
-        />
-        <ContextField
-          component={InputLabeled}
-          name={"comment"}
-          label={"Комментарий"}
-        />
-        <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
-          Добавить
-        </Button>
+        <FormContainer>
+          <ContextField
+            component={InputLabeled}
+            name={"income"}
+            label={"Доходы"}
+          />
+          <ContextField
+            component={DropdownLabeled}
+            label={"Категория"}
+            name={"category"}
+            option={categoriesStore.optionCategoriesIncome}
+          />
+          <ContextField
+            component={InputLabeled}
+            name={"comment"}
+            label={"Комментарий"}
+          />
+          <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
+            Добавить
+          </Button>
+        </FormContainer>
       </FormProvider>
     </IncomesFormContainer>
   );
@@ -64,12 +66,17 @@ export default observer(IncomesFormWidget);
 const IncomesFormContainer = styled("div")(
   ({ theme }) => css`
     width: 50%;
-    height: 300px;
     background-color: ${theme.color.second};
-    padding: 40px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-radius: 12px;
   `
 );
+
+const FormContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;

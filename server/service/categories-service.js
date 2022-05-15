@@ -11,6 +11,21 @@ class CategoriesService {
     }
     return { categories };
   }
+
+  async addCategory(userId, category) {
+    const categories = await CategoriesModel.updateOne(
+      { user: userId },
+      {
+        $push: {
+          categories: {
+            category: category.category,
+            type: category.type,
+          },
+        },
+      }
+    );
+    return { categories };
+  }
 }
 
 module.exports = new CategoriesService();

@@ -19,14 +19,15 @@ export default LabeledField;
 const FieldWrapper = styled("div")(
   () => css`
     position: relative;
+    width: 100%;
   `
 );
 
 const Label = styled("div")(
-  ({error, theme}) => css`
+  ({ error, theme }) => css`
     position: absolute;
     top: -20px;
     font-size: 10px;
-    color: ${error ? theme.color.red : 'white'};
+    color: ${error ? theme.color.red : "white"};
   `
 );

@@ -13,6 +13,7 @@ import { ReactComponent as Home } from "assets/image/icons/icon-nav-home.svg";
 import { ReactComponent as Income } from "assets/image/icons/icon-nav-income.svg";
 import { ReactComponent as Expenses } from "assets/image/icons/icon-nav-expenses.svg";
 import { ReactComponent as Statistics } from "assets/image/icons/icon-nav-statistics.svg";
+import { ReactComponent as Plus } from "assets/image/icons/icon-plus.svg";
 
 export const IconRuble = Ruble;
 export const IconEuro = Euro;
@@ -29,3 +30,4 @@ export const IconHome = Home;
 export const IconIncome = Income;
 export const IconExpenses = Expenses;
 export const IconStatistics = Statistics;
+export const IconPlus = Plus;
