@@ -1,7 +1,8 @@
 const Router = require("express").Router;
 const UserController = require("../controllers/user-controller");
 const BudgetController = require("../controllers/budget-controller");
-const SettingsController = require("../controllers/settings-controller")
+const SettingsController = require("../controllers/settings-controller");
+const CategoriesController = require("../controllers/categories-controller");
 const router = new Router();
 const { check } = require("express-validator");
 
@@ -27,7 +28,17 @@ router.get("/get-balance", AuthMiddleware, BudgetController.getBalance);
 router.post("/create-action", AuthMiddleware, BudgetController.createAction);
 router.post("/delete-action", AuthMiddleware, BudgetController.deleteAction);
 
-router.get("/get-settings", AuthMiddleware, SettingsController.getSettings)
-router.post("/change-currency", AuthMiddleware, SettingsController.changeCurrency)
+router.get("/get-settings", AuthMiddleware, SettingsController.getSettings);
+router.post(
+  "/change-currency",
+  AuthMiddleware,
+  SettingsController.changeCurrency
+);
+
+router.get(
+  "/get-categories",
+  AuthMiddleware,
+  CategoriesController.getCategories
+);
 
 module.exports = router;

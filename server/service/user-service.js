@@ -1,6 +1,7 @@
 const UserModel = require("../models/user-model");
 const BudgetModel = require("../models/budget-models");
 const SettingsModel = require("../models/settinsgs-model");
+const CategoriesModel = require("../models/categories-models");
 
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
@@ -33,6 +34,7 @@ class UserService {
 
     await BudgetModel.create({ user: userDto.id });
     await SettingsModel.create({ user: userDto.id });
+    await CategoriesModel.create({ user: userDto.id });
 
     await tokenService.saveTokens(userDto.id, tokens.refreshToken);
     return { ...tokens, user: userDto };

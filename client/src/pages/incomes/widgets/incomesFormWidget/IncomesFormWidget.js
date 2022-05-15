@@ -12,7 +12,7 @@ const DropdownLabeled = LabeledField(Dropdown);
 const InputLabeled = LabeledField(Input);
 
 const IncomesFormWidget = () => {
-  const { budgetStore } = useContext(Context);
+  const { budgetStore, categoriesStore } = useContext(Context);
   const { defaultSchema, defaultValues } = useFormSchema();
 
   const form = useForm({
@@ -30,11 +30,6 @@ const IncomesFormWidget = () => {
     }
   );
 
-  const option = [
-    { id: 0, label: "Зарплата", value: "Зарплата" },
-    { id: 1, label: "Аванс", value: "Аванс" },
-  ];
-
   return (
     <IncomesFormContainer>
       <FormProvider {...form}>
@@ -47,7 +42,7 @@ const IncomesFormWidget = () => {
           component={DropdownLabeled}
           label={"Категория"}
           name={"category"}
-          option={option}
+          option={categoriesStore.optionCategoriesIncome}
         />
         <ContextField
           component={InputLabeled}

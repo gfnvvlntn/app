@@ -13,7 +13,7 @@ const DropdownLabeled = LabeledField(Dropdown);
 const InputLabeled = LabeledField(Input);
 
 const ExpensesFormWidget = () => {
-  const { budgetStore } = useContext(Context);
+  const { budgetStore, categoriesStore } = useContext(Context);
   const { defaultSchema, defaultValues } = useFormSchema();
   const form = useForm({
     resolver: yupResolver(defaultSchema),
@@ -28,14 +28,6 @@ const ExpensesFormWidget = () => {
     form.reset();
   });
 
-  const option = [
-    { id: 0, label: "Разное", value: "Разное" },
-    { id: 1, label: "Еда", value: "Еда" },
-    { id: 2, label: "Сигареты", value: "Сигареты" },
-    { id: 3, label: "Проезд", value: "Проезд" },
-    { id: 4, label: "Алкоголь", value: "Алкоголь" },
-  ];
-
   return (
     <ExpensesFormContainer>
       <FormProvider {...form}>
@@ -48,7 +40,7 @@ const ExpensesFormWidget = () => {
           component={DropdownLabeled}
           name={"category"}
           label={"Категория"}
-          option={option}
+          option={categoriesStore.optionCategoriesExpense}
         />
         <ContextField
           component={InputLabeled}

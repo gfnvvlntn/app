@@ -6,15 +6,18 @@ import SettingsStore from "./store/settingsStore";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme";
+import CategoriesStore from "./store/categoriesStore";
 
 const authStore = new AuthStore();
 const budgetStore = new BudgetStore();
 const settingsStore = new SettingsStore();
+const categoriesStore = new CategoriesStore();
 
 export const Context = createContext({
   authStore,
   budgetStore,
   settingsStore,
+  categoriesStore,
 });
 
 const Root = () => {
@@ -35,10 +38,17 @@ const Root = () => {
       settingsStore.getSettings();
     }
   }, []);
+
+  useEffect(() => {
+    categoriesStore.getCategories();
+  }, []);
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Context.Provider value={{ authStore, budgetStore, settingsStore }}>
+        <Context.Provider
+          value={{ authStore, budgetStore, settingsStore, categoriesStore }}
+        >
           <React.StrictMode>
             <App />
           </React.StrictMode>
