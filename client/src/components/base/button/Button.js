@@ -50,6 +50,13 @@ const getVariantStyle = ({ theme, variant }) => {
         }
       `;
     }
+    case ButtonVariant.ICON: {
+      return css`
+        width: 30px;
+        background-color: inherit;
+        padding: 0;
+      `
+    }
     default:
       return "";
   }

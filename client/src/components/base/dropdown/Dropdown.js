@@ -1,9 +1,9 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import styled, { css } from "styled-components";
 
 import { ReactComponent as IconArrow } from "assets/image/icons/icon-dropdown.svg";
 import { Typography, TypographyVariant } from "../index";
-import useOnClickOutside from "../../../hooks/use-onclick-outside";
+import useOnClickOutside from "hooks/use-onclick-outside";
 import { motion } from "framer-motion";
 
 const Dropdown = ({
@@ -16,14 +16,12 @@ const Dropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-
   const dropdownRef = useRef();
   useOnClickOutside(dropdownRef, () => setIsOpen(false));
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
   const handleItemClick = useCallback((id, value) => {
     selectedItem === id ? setSelectedItem(null) : setSelectedItem(id);
     onChange && onChange(value);
@@ -41,6 +39,11 @@ const Dropdown = ({
           defaultValue ? item.value === defaultValue : item.value === value
         )
       : false;
+
+  useEffect(() => {
+    if (value) setSelectedItem(option.find(item => item.value === value).id)
+  },[value])
+
   return (
     <DropdownContainer error={error} ref={dropdownRef}>
       <DropdownHeader onClick={toggleDropdown}>

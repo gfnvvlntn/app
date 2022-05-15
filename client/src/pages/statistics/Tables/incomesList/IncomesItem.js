@@ -21,7 +21,9 @@ const IncomesItem = ({ income }) => {
       </Typography>
       <Moment format={"DD.MM.YY hh:mm"}>{income.creationDate}</Moment>
       <IncomesItemCategory>
-        <Typography variant={TypographyVariant.text1}>Зарплата</Typography>
+        <Typography variant={TypographyVariant.text1}>
+          {income.category}
+        </Typography>
       </IncomesItemCategory>
       <IncomesItemButtonGroup>
         <IconEdit />

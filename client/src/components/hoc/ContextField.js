@@ -4,7 +4,7 @@ import { Input } from "../base";
 
 const ContextField = ({
   component: FieldComponent = Input,
-  defaultValue = undefined,
+  defaultValue,
   name,
   ...props
 }) => {

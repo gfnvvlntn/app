@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import MainLayout from "components/composite/layouts/MainLayout";
 import Dropdown from "components/base/dropdown/Dropdown";
 import { currencyOption } from "./constants";
@@ -13,7 +13,6 @@ const Settings = () => {
   const onChangeCurrency = (value) => {
     settingsStore.changeCurrency(value);
   };
-
   return (
     <MainLayout>
       <Container>
@@ -38,6 +37,7 @@ export default observer(Settings);
 const Container = styled("div")`
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 20px;
   margin: 20px;
 `;

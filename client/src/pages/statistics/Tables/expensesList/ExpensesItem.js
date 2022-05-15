@@ -22,7 +22,7 @@ const ExpensesItem = ({ expense }) => {
       </Typography>
       <Moment format={"DD.MM.YY hh:mm"}>{expense.creationDate}</Moment>
       <ExpensesItemCategory>
-        <Typography variant={TypographyVariant.text1}>Еда</Typography>
+        <Typography variant={TypographyVariant.text1}>{expense.category}</Typography>
       </ExpensesItemCategory>
       <ExpensesItemButtonGroup>
         <IconEdit />

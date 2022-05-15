@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Input = ({ name, onChange, error }) => {
+const Input = ({ name, onChange, error, value }) => {
     return (
     <FieldWrapper error={error}>
-      <Field  name={name} onChange={onChange}/>
+      <Field  name={name} onChange={onChange} value={value}/>
     </FieldWrapper>
   );
 };

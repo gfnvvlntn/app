@@ -1,6 +1,7 @@
 const ButtonVariant = {
-    PRIMARY: "PRIMARY",
-    SECONDARY: "SECONDARY",
+  PRIMARY: "PRIMARY",
+  SECONDARY: "SECONDARY",
+  ICON: "ICON",
 };
 
-export default ButtonVariant
+export default ButtonVariant;

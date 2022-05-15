@@ -7,21 +7,49 @@ import BalanceWidget from "./widgets/BalanceWidget";
 import ExpensesWidget from "./widgets/ExpensesWidget";
 import IncomesWidget from "./widgets/IncomesWidget";
 import ExchangeRatesWidget from "./widgets/ExchangeRatesWidget";
-import {Typography, TypographyVariant} from "components/base";
+import { Typography, TypographyVariant } from "components/base";
+import { motion } from "framer-motion";
+
+const home_widgets = [
+  <BalanceWidget />,
+  <ExchangeRatesWidget />,
+  <ExpensesWidget />,
+  <ExchangeRatesWidget />,
+  <IncomesWidget />,
+]
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 
 const Home = () => {
   return (
     <MainLayout>
       <HomeHeader variant={TypographyVariant.h2}>Главная</HomeHeader>
       <HomeBody>
-        <HomeLeftWidgets>
-          <BalanceWidget />
-          <ExpensesWidget />
-          <IncomesWidget />
-        </HomeLeftWidgets>
-        <HomeRightWidgets>
-          <ExchangeRatesWidget />
-        </HomeRightWidgets>
+        <HomeWidgets variants={container} initial="hidden" animate="visible">
+          {home_widgets.map((el, index) => (
+            <motion.li key={index} variants={item}>
+              {el}
+            </motion.li>
+          ))}
+        </HomeWidgets>
       </HomeBody>
     </MainLayout>
   );
@@ -46,18 +74,13 @@ const HomeBody = styled("div")(
   `
 );
 
-const HomeLeftWidgets = styled("div")(
+const HomeWidgets = styled(motion.ul)(
   () => css`
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
-  `
-);
-
-const HomeRightWidgets = styled("div")(
-  () => css`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   `
 );
