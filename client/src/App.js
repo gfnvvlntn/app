@@ -1,46 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
-import { BrowserRouter } from "react-router-dom";
 import Pages from "pages/Pages";
 import Navbar from "components/composite/navbar/Navbar";
-import styled, { css, ThemeProvider } from "styled-components";
-import { theme } from "theme/theme";
+import styled, { css } from "styled-components";
 import PageBar from "components/composite/pagebar/PageBar";
 
 function App() {
-  const { authStore, budgetStore, settingsStore } = useContext(Context);
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      authStore.checkAuth();
-    }
-  }, []);
-
-  useEffect(() => {
-    if (authStore.isAuth) {
-      budgetStore.getBudget();
-    }
-  }, [authStore.isAuth]);
-
-  useEffect(() => {
-    if (authStore.isAuth) {
-      settingsStore.getSettings()
-    }
-  },[])
-
+  const { authStore } = useContext(Context);
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <AppContainer>
-          <AppContent>
-            <Navbar />
-            {authStore.isAuth && <PageBar />}
-            <Pages />
-          </AppContent>
-        </AppContainer>
-      </ThemeProvider>
-    </BrowserRouter>
+    <AppContainer>
+      <AppContent>
+        <Navbar />
+        {authStore.isAuth && <PageBar />}
+        <Pages />
+      </AppContent>
+    </AppContainer>
   );
 }
 

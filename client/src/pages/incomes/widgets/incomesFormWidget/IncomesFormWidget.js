@@ -3,43 +3,32 @@ import styled, { css } from "styled-components";
 import { FormProvider, useForm } from "react-hook-form";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
-import { Button, ButtonVariant, Input } from "components/base";
-import * as yup from "yup";
+import { Button, ButtonVariant, Input, Dropdown } from "components/base";
 import { yupResolver } from "@hookform/resolvers/yup";
-import ContextField from "components/hoc/ContextField";
-import Dropdown from "components/base/dropdown/Dropdown";
-import LabeledField from "components/hoc/LabeledField";
+import { ContextField, LabeledField } from "components/hoc";
+import useFormSchema from "./IncomesSchema";
 
 const DropdownLabeled = LabeledField(Dropdown);
 const InputLabeled = LabeledField(Input);
 
-const defaultSchema = yup.object().shape({
-  income: yup
-    .string()
-    .required("Поля обезательно для заполнения")
-    .matches(/^\d+$/, "Поля может содержать только цифры"),
-  category: yup.string().required("Категория обезательное поле"),
-  comment: yup.string(),
-});
-
 const IncomesFormWidget = () => {
   const { budgetStore } = useContext(Context);
+  const { defaultSchema, defaultValues } = useFormSchema();
 
   const form = useForm({
     resolver: yupResolver(defaultSchema),
-    defaultValues: {
-      income: "",
-      category: "Зарплата",
-      comment: ""
-    },
+    defaultValues: { ...defaultValues },
   });
 
-  const onSubmitHandler = form.handleSubmit(async (value) => {
-    await budgetStore.createAction({ ...value, action: value.income });
-    form.reset()
-  }, (value) => {
-    console.log(value)
-  });
+  const onSubmitHandler = form.handleSubmit(
+    async (value) => {
+      await budgetStore.createAction({ ...value, action: value.income });
+      form.reset();
+    },
+    (value) => {
+      console.log(value);
+    }
+  );
 
   const option = [
     { id: 0, label: "Зарплата", value: "Зарплата" },
@@ -61,9 +50,9 @@ const IncomesFormWidget = () => {
           option={option}
         />
         <ContextField
-            component={InputLabeled}
-            name={"comment"}
-            label={"Комментарий"}
+          component={InputLabeled}
+          name={"comment"}
+          label={"Комментарий"}
         />
         <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
           Добавить

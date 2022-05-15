@@ -3,38 +3,28 @@ import styled, { css } from "styled-components";
 import { FormProvider, useForm } from "react-hook-form";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
-import { Button, ButtonVariant, Input } from "components/base";
+import { Button, ButtonVariant, Input, Dropdown } from "components/base";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import Dropdown from "components/base/dropdown/Dropdown";
-import {ContextField, LabeledField} from "components/hoc";
+import { ContextField, LabeledField } from "components/hoc";
+import { NEGATIVE_VALUE } from "./constants";
+import useFormSchema from "./ExpensesSchema";
 
 const DropdownLabeled = LabeledField(Dropdown);
 const InputLabeled = LabeledField(Input);
 
-const defaultSchema = yup.object().shape({
-  expense: yup
-    .string()
-    .required("Поля обезательно для заполнения")
-    .matches(/^\d+$/, "Поля может содержать только цифры"),
-  category: yup.string().required("Категория обезательное поле"),
-  comment: yup.string(),
-});
-
 const ExpensesFormWidget = () => {
   const { budgetStore } = useContext(Context);
-
+  const { defaultSchema, defaultValues } = useFormSchema();
   const form = useForm({
     resolver: yupResolver(defaultSchema),
-    defaultValues: {
-      expense: "",
-      category: "Разное",
-      comment: ""
-    },
+    defaultValues: { ...defaultValues },
   });
 
   const onSubmitHandler = form.handleSubmit(async (value) => {
-    await budgetStore.createAction({...value, action : value.expense * -1});
+    await budgetStore.createAction({
+      ...value,
+      action: value.expense * NEGATIVE_VALUE,
+    });
     form.reset();
   });
 
@@ -46,13 +36,25 @@ const ExpensesFormWidget = () => {
     { id: 4, label: "Алкоголь", value: "Алкоголь" },
   ];
 
-
   return (
     <ExpensesFormContainer>
       <FormProvider {...form}>
-        <ContextField component={InputLabeled} name={"expense"} label={"Расходы"} />
-        <ContextField component={DropdownLabeled} name={"category"} label={"Категория"} option={option}/>
-        <ContextField component={InputLabeled} name={"comment"} label={"Комментарий"} />
+        <ContextField
+          component={InputLabeled}
+          name={"expense"}
+          label={"Расходы"}
+        />
+        <ContextField
+          component={DropdownLabeled}
+          name={"category"}
+          label={"Категория"}
+          option={option}
+        />
+        <ContextField
+          component={InputLabeled}
+          name={"comment"}
+          label={"Комментарий"}
+        />
         <Button variant={ButtonVariant.SECONDARY} onClick={onSubmitHandler}>
           Добавить
         </Button>
