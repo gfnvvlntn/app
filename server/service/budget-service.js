@@ -104,7 +104,7 @@ class BudgetService {
     await BudgetModel.create({
       balance: action.action,
       user: userId,
-      creationDate: Date.now(),
+      creationDate: action.creationDate,
       category: action.category,
       comment: action.comment,
     });

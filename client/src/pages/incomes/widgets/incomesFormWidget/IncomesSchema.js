@@ -8,12 +8,14 @@ const incomesSchema = yup.object().shape({
     .matches(/^\d+$/, "Поля может содержать только цифры"),
   category: yup.string().required("Категория обезательное поле"),
   comment: yup.string(),
+  creationDate: yup.string(),
 });
 
 const values = {
   income: "",
   category: "Зарплата",
   comment: "",
+  creationDate: "",
 };
 
 const useFormSchema = () => {

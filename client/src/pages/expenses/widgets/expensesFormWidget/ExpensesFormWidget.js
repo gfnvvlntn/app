@@ -3,7 +3,13 @@ import styled, { css } from "styled-components";
 import { FormProvider, useForm } from "react-hook-form";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
-import { Button, ButtonVariant, Input, Dropdown } from "components/base";
+import {
+  Button,
+  ButtonVariant,
+  Input,
+  Dropdown,
+  DatePicker,
+} from "components/base";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ContextField, LabeledField } from "components/hoc";
 import { NEGATIVE_VALUE } from "./constants";
@@ -11,6 +17,7 @@ import useFormSchema from "./ExpensesSchema";
 
 const DropdownLabeled = LabeledField(Dropdown);
 const InputLabeled = LabeledField(Input);
+const DatePickerLabeled = LabeledField(DatePicker);
 
 const ExpensesFormWidget = () => {
   const { budgetStore, categoriesStore } = useContext(Context);
@@ -47,6 +54,11 @@ const ExpensesFormWidget = () => {
             component={InputLabeled}
             name={"comment"}
             label={"Комментарий"}
+          />
+          <ContextField
+            component={DatePickerLabeled}
+            name={"creationDate"}
+            label={"Дата"}
           />
           <Button variant={ButtonVariant.SECONDARY} onClick={onSubmitHandler}>
             Добавить
