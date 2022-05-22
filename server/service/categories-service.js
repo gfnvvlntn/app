@@ -26,6 +26,20 @@ class CategoriesService {
     );
     return { categories };
   }
+
+  async deleteCategory(userId, categoryId) {
+    const categories = await CategoriesModel.updateOne(
+      { user: userId },
+      {
+        $pull: {
+          categories: {
+            _id: categoryId,
+          },
+        },
+      }
+    );
+    return { categories };
+  }
 }
 
 module.exports = new CategoriesService();

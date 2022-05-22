@@ -42,5 +42,10 @@ router.get(
 );
 
 router.post("/add-category", AuthMiddleware, CategoriesController.addCategory);
+router.post(
+  "/delete-category",
+  AuthMiddleware,
+  CategoriesController.deleteCategory
+);
 
 module.exports = router;

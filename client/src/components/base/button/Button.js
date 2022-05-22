@@ -11,6 +11,7 @@ const getBaseStyle = ({ theme }) => {
     border-radius: 666px;
     cursor: pointer;
     border: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   `;
 };
 
@@ -59,6 +60,7 @@ const getVariantStyle = ({ theme, variant }) => {
         width: 30px;
         background-color: inherit;
         padding: 0;
+        box-shadow: none;
 
         &:hover {
           opacity: 0.8;

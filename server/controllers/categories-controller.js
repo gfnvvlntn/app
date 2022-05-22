@@ -6,7 +6,7 @@ class CategoriesController {
     try {
       const user = req.user;
 
-      if (!user.id) {
+      if (!user) {
         return next(ApiError.UnAuthorizedError());
       }
       const categoriesData = await CategoriesService.getCategories(user.id);
@@ -20,7 +20,7 @@ class CategoriesController {
   async addCategory(req, res, next) {
     try {
       const user = req.user;
-      if (!user.id) {
+      if (!user) {
         return next(ApiError.UnAuthorizedError());
       }
       const { category } = req.body;
@@ -33,6 +33,27 @@ class CategoriesController {
         category
       );
       return res.json(categoriesData.categories);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async deleteCategory(req, res, next) {
+    try {
+      const user = req.user;
+      if (!user) {
+        return next(ApiError.UnAuthorizedError());
+      }
+      const { categoryId } = req.body;
+      if (!categoryId) {
+        return next(ApiError.BadRequest("Введите корректные данные"));
+      }
+      const categoriesData = await CategoriesService.deleteCategory(
+        user.id,
+        categoryId
+      );
+
+      return res.json(categoriesData);
     } catch (e) {
       next(e);
     }

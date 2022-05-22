@@ -8,4 +8,8 @@ export default class CategoriesService {
   static async addCategory(category) {
     return api.post("/add-category", { category });
   }
+
+  static async deleteCategory(categoryId) {
+    return api.post("/delete-category", { categoryId });
+  }
 }

@@ -5,12 +5,17 @@ import CategoriesForm from "components/composite/categories/CategoriesForm";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
 
+const TYPE_CATEGORY = "income";
+
 const IncomeCategoriesWidget = () => {
   const { categoriesStore } = useContext(Context);
   return (
     <Container>
-      <CategoriesList categories={categoriesStore.categoriesIncome} />
-      <CategoriesForm type={"income"} />
+      <CategoriesList
+        categories={categoriesStore.categoriesIncome}
+        type={TYPE_CATEGORY}
+      />
+      <CategoriesForm type={TYPE_CATEGORY} />
     </Container>
   );
 };

@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 import CategoriesItem from "./CategoriesItem";
 import { Typography, TypographyVariant } from "../../base";
 
-const CategoriesList = ({ categories }) => {
+const CategoriesList = ({ categories, type }) => {
   return (
     <Container>
       <Typography variant={TypographyVariant.h4}>Котегории</Typography>
       <Content>
         {categories.map((category) => (
-          <CategoriesItem key={category._id} category={category} />
+          <CategoriesItem type={type} key={category._id} category={category} />
         ))}
       </Content>
     </Container>
@@ -32,4 +32,5 @@ const Container = styled("div")(
 const Content = styled("div")`
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 `;

@@ -27,27 +27,23 @@ export default class CategoriesStore {
   }
 
   get optionCategoriesExpense() {
-    return (
-      this._categoriesExpense.map((option) => {
-        return {
-          id: option._id,
-          label: option.category,
-          value: option.category,
-        };
-      }) || [{ id: 1, label: "", value: "" }]
-    );
+    return this._categoriesExpense.map((option) => {
+      return {
+        id: option._id,
+        label: option.category,
+        value: option.category,
+      };
+    });
   }
 
   get optionCategoriesIncome() {
-    return (
-      this._categoriesIncome.map((option) => {
-        return {
-          id: option._id,
-          label: option.category,
-          value: option.category,
-        };
-      }) || [{ id: 1, label: "", value: "" }]
-    );
+    return this._categoriesIncome.map((option) => {
+      return {
+        id: option._id,
+        label: option.category,
+        value: option.category,
+      };
+    });
   }
 
   async getCategories() {
@@ -61,8 +57,19 @@ export default class CategoriesStore {
 
   async addCategory(category) {
     try {
-      const response = await CategoriesService.addCategory(category);
-      this.sortCategories(response?.data?.categories);
+      await CategoriesService.addCategory(category);
+      return this.getCategories();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async deleteCategory(categoryId, type) {
+    try {
+      if (type === "income" && this.categoriesIncome.length === 1) return;
+      if (type === "expense" && this.categoriesExpense.length === 1) return;
+      await CategoriesService.deleteCategory(categoryId);
+      return this.getCategories();
     } catch (e) {
       console.log(e);
     }

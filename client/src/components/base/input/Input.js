@@ -2,13 +2,12 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const Input = ({ name, onChange, error, value }) => {
-    return (
+  return (
     <FieldWrapper error={error}>
-      <Field  name={name} onChange={onChange} value={value}/>
+      <Field name={name} onChange={onChange} value={value} />
     </FieldWrapper>
   );
 };
-
 
 Input.displayName = "Input";
 
@@ -21,6 +20,7 @@ const FieldWrapper = styled("div")(
     display: flex;
     border-radius: 0.428571rem;
     background-color: ${theme.color.four};
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   `
 );
 

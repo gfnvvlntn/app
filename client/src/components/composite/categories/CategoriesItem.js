@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import {
   Button,
@@ -7,14 +7,19 @@ import {
   TypographyVariant,
 } from "../../base";
 import { IconDelete } from "assets/image/icons";
+import { Context } from "root";
 
-const CategoriesItem = ({ category }) => {
+const CategoriesItem = ({ category, type }) => {
+  const { categoriesStore } = useContext(Context);
+  const onDelete = () => {
+    categoriesStore.deleteCategory(category._id, type);
+  };
   return (
     <Container>
       <Typography variant={TypographyVariant.h5}>
         {category.category}
       </Typography>
-      <Button variant={ButtonVariant.ICON}>
+      <Button onClick={onDelete} variant={ButtonVariant.ICON}>
         <IconDelete style={{ width: 15, height: 15 }} />
       </Button>
     </Container>

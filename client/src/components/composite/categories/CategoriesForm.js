@@ -45,6 +45,7 @@ export default CategoriesForm;
 const Container = styled("div")`
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 20px;
   justify-content: space-between;
 `;
