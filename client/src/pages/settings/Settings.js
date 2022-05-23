@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import "react-datepicker/dist/react-datepicker.css";
-import DateInput from "../../components/base/date-picker/DatePicker";
 
 const Settings = () => {
   const { settingsStore } = useContext(Context);
@@ -27,7 +26,6 @@ const Settings = () => {
           defaultValue={settingsStore.currency}
           onChange={onChangeCurrency}
         />
-        <DateInput />
       </Container>
     </MainLayout>
   );
