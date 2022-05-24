@@ -16,7 +16,7 @@ class UserService {
   async registration(email, password) {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
-      return { error: 1, message: `Пользователь с таким email уже существует` };
+      return { error: 1, message: `auth error.user exists` };
     }
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4();
@@ -45,14 +45,14 @@ class UserService {
     if (!user) {
       return {
         error: 1,
-        message: `Пользователь с таким email или паролем не существует`,
+        message: `auth error.user does not exist`,
       };
     }
     const isPasswordEquals = await bcrypt.compare(password, user.password);
     if (!isPasswordEquals) {
       return {
         error: 1,
-        message: `Пользователь с таким email или паролем не существует`,
+        message: `auth error.user does not exist`,
       };
     }
     const userDto = new UserDto(user);
@@ -68,7 +68,7 @@ class UserService {
   async activate(activationLink) {
     const user = await UserModel.findOne({ activationLink });
     if (!user) {
-      throw ApiError.BadRequest("Неккоректная ссылка активации");
+      throw ApiError.BadRequest("auth error.broken link");
     }
     user.isActivated = true;
     await user.save();

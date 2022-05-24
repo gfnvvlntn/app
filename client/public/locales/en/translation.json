@@ -1,0 +1,26 @@
+{
+  "label": {
+    "email": "Email",
+    "password": "Password",
+    "repeat password": "Repeat password"
+  },
+  "button": {
+    "sing in": "Sing in",
+    "registration": "Registration"
+  },
+  "slogan": "Application for entering a personal budget",
+  "word": {
+    "login": "Login",
+    "registration on the platform": "Registration on the platform"
+  },
+  "auth error": {
+    "user exists": "User with this email already exists",
+    "user does not exist": "User with this email or password does not exist",
+    "broken link": "Incorrect activation link",
+    "user not authorized": "User not authorized",
+    "validation error": "Validation error",
+    "enter a valid email": "Enter a valid email",
+    "easy password": "Do not enter such a simple password",
+    "min length": "Minimum number of characters 6"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "label": {
+    "email": "Почта",
+    "password": "Пароль",
+    "repeat password": "Повторить пароль"
+  },
+  "button": {
+    "sing in": "Войти",
+    "registration": "Регистрация"
+  },
+  "slogan": "Приложение для введения личного бюджета",
+  "word": {
+    "login": "Вход",
+    "registration on the platform": "Регистрация на платформе"
+  },
+  "auth error": {
+    "user exists": "Пользователь с таким email уже существует",
+    "user does not exist": "Пользователь с таким email или паролем не существует",
+    "broken link": "Неккоректная ссылка активации",
+    "user not authorized": "Пользователь не авторизован",
+    "validation error": "Ошибка при валидации",
+    "enter a valid email": "Введите корректный email",
+    "easy password": "Не вводите такой простой пароль",
+    "min length": "Минимальное количество символов 6"
+  }
+}

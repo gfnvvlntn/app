@@ -6,14 +6,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import HeaderMessage from "components/composite/header/HeaderMessage";
 import { observer } from "mobx-react-lite";
 import { Button, ButtonVariant, Input } from "components/base";
-import {ContextField, LabeledField} from "components/hoc";
+import { ContextField, LabeledField } from "components/hoc";
+import { useTranslation } from "react-i18next";
 
 const InputLabeled = LabeledField(Input);
 
-
 const LoginForm = ({ onSubmit }) => {
   const { defaultSchema, defaultValues } = useFormSchema();
-
+  const { t } = useTranslation();
   const form = useForm({
     resolver: yupResolver(defaultSchema),
     defaultValues: defaultValues,
@@ -25,12 +25,20 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <FormProvider {...form}>
       <Container>
-        <HeaderMessage title={"Вход"} />
+        <HeaderMessage title={t("word.login")} />
         <Content>
-          <ContextField component={InputLabeled} label={"Почта"} name={"email"} />
-          <ContextField component={InputLabeled} label={"Пароль"} name={"password"} />
+          <ContextField
+            component={InputLabeled}
+            label={t("label.email")}
+            name={"email"}
+          />
+          <ContextField
+            component={InputLabeled}
+            label={t("label.password")}
+            name={"password"}
+          />
           <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
-            Войти
+            {t("button.sing in")}
           </Button>
         </Content>
       </Container>

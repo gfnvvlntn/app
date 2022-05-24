@@ -4,14 +4,17 @@ import styled, { css } from "styled-components";
 import { Context } from "root";
 import { Typography, TypographyVariant } from "../../base";
 import { observer } from "mobx-react-lite";
+import { useTranslation } from "react-i18next";
 
 const HeaderMessage = ({ title }) => {
   const { authStore } = useContext(Context);
-
+  const { t } = useTranslation();
   return (
     <>
       <HeaderMessageContainer>
-        {authStore.message && <MessageError>{authStore.message}</MessageError>}
+        {authStore.message && (
+          <MessageError>{t(authStore.message)}</MessageError>
+        )}
       </HeaderMessageContainer>
       <HeaderTitle
         variant={TypographyVariant.h1}

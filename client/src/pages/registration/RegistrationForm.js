@@ -6,13 +6,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useFormSchema from "./RegistrationSchema";
 import HeaderMessage from "components/composite/header/HeaderMessage";
 import { Button, ButtonVariant, Input } from "components/base";
-import {ContextField, LabeledField} from "components/hoc";
-
+import { ContextField, LabeledField } from "components/hoc";
+import { useTranslation } from "react-i18next";
 
 const InputLabeled = LabeledField(Input);
 
 const RegistrationForm = ({ onSubmit }) => {
   const { defaultSchema, defaultValues } = useFormSchema();
+  const { t } = useTranslation();
 
   const form = useForm({
     resolver: yupResolver(defaultSchema),
@@ -26,25 +27,25 @@ const RegistrationForm = ({ onSubmit }) => {
   return (
     <FormProvider {...form}>
       <Container>
-        <HeaderMessage title={"Регистрация на платформе"} />
+        <HeaderMessage title={t("word.registration on the platform")} />
         <Content>
           <ContextField
             component={InputLabeled}
             name={"email"}
-            label={"Почта"}
+            label={t("label.email")}
           />
           <ContextField
             component={InputLabeled}
             name={"password"}
-            label={"Пароль"}
+            label={t("label.password")}
           />
           <ContextField
             component={InputLabeled}
             name={"repeatPassword"}
-            label={"Повторить пароль"}
+            label={t("label.repeat password")}
           />
           <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
-            Регистрация
+            {t("button.registration")}
           </Button>
         </Content>
       </Container>

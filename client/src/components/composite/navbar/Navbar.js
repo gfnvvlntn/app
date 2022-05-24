@@ -1,15 +1,31 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import styled, { css } from "styled-components";
-import {IconLogin, IconLogo, IconWarning, IconLogout, IconSettings, IconRegistration} from "assets/image/icons";
+import {
+  IconLogin,
+  IconLogo,
+  IconWarning,
+  IconLogout,
+  IconSettings,
+  IconRegistration,
+  IconUsa,
+  IconRu,
+} from "assets/image/icons";
 import NavbarLink from "./NavbarLink";
 import { Context } from "root";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const { authStore } = useContext(Context);
 
   const onLogout = async () => {
     await authStore.logout();
+  };
+
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
   };
 
   if (!authStore.isAuth) {
@@ -19,6 +35,14 @@ const Navbar = () => {
           <NavbarLink to={"/login"} icon={<IconLogin />} />
           <NavbarLink to={"/registration"} icon={<IconRegistration />} />
           <NavbarLine />
+          <IconRu
+            style={{ cursor: "pointer" }}
+            onClick={() => changeLanguage("ru")}
+          />
+          <IconUsa
+            onClick={() => changeLanguage("en")}
+            style={{ cursor: "pointer" }}
+          />
         </NavbarGroupLink>
       </NavbarContainer>
     );

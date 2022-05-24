@@ -10,13 +10,13 @@ const AuthMiddleware = require("../middleware/auth-middleware");
 
 router.post(
   "/registration",
-  check("email", "Введите корректный email").isEmail(),
+  check("email", "auth error.enter a valid email").isEmail(),
   check("password")
     .not()
     .isIn(["123456", "qwerty", "password", "пароль"])
-    .withMessage("Не вводите такой простой пароль")
+    .withMessage("auth error.easy password")
     .isLength({ min: 6 })
-    .withMessage("Минимальное количество символов 6"),
+    .withMessage("auth error.min length"),
   UserController.registration
 );
 router.post("/login", UserController.login);
