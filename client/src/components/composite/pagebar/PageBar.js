@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled, { css } from "styled-components";
 import PageBarLink from "./PageBarLink";
 import {
   IconHome,
@@ -10,46 +9,48 @@ import {
 import { Context } from "root";
 import { Typography, TypographyVariant } from "../../base";
 import { motion } from "framer-motion";
-
-const page_bar_links = [
-  <PageBarLink to={"/"} icon={<IconHome />} title={"Главная"} />,
-  <PageBarLink to={"/incomes"} icon={<IconIncome />} title={"Доходы"} />,
-  <PageBarLink to={"/expenses"} icon={<IconExpenses />} title={"Расходы"} />,
-  <PageBarLink
-    to={"/statistics"}
-    icon={<IconStatistics />}
-    title={"Статистика"}
-  />,
-];
-
-const container = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
+import { useTranslation } from "react-i18next";
+import {
+  container,
+  item,
+  PageBarContainer,
+  PageBarFooter,
+  PageBarHeader,
+  PageBarLine,
+  PageBarLinks,
+  PageBarListLink,
+} from "./styled";
 
 const PageBar = () => {
   const { authStore } = useContext(Context);
+  const { t } = useTranslation();
+
+  const page_bar_links = [
+    <PageBarLink to={"/"} icon={<IconHome />} title={t("pages.main")} />,
+    <PageBarLink
+      to={"/incomes"}
+      icon={<IconIncome />}
+      title={t("pages.incomes")}
+    />,
+    <PageBarLink
+      to={"/expenses"}
+      icon={<IconExpenses />}
+      title={t("pages.expenses")}
+    />,
+    <PageBarLink
+      to={"/statistics"}
+      icon={<IconStatistics />}
+      title={t("pages.statistics")}
+    />,
+  ];
 
   return (
     <PageBarContainer>
       <PageBarLinks>
         <PageBarHeader>
-          <Typography variant={TypographyVariant.h2}>Страницы</Typography>
+          <Typography variant={TypographyVariant.h2}>
+            {t("pages.pages")}
+          </Typography>
         </PageBarHeader>
         <PageBarLine />
         <PageBarListLink
@@ -72,41 +73,3 @@ const PageBar = () => {
 PageBar.displayName = "PageBar";
 
 export default PageBar;
-
-const PageBarContainer = styled("div")(
-  ({ theme }) => css`
-    width: 300px;
-    background-color: ${theme.color.main};
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px 0;
-    border-radius: 12px;
-  `
-);
-
-const PageBarHeader = styled("div")`
-  padding: 20px;
-  text-align: center;
-`;
-
-const PageBarLinks = styled("div")``;
-
-const PageBarLine = styled("div")`
-  width: 90%;
-  margin: 0 auto 20px;
-  height: 1.5px;
-  background-color: white;
-  opacity: 0.4;
-`;
-
-const PageBarFooter = styled(Typography)`
-  padding: 20px;
-`;
-
-const PageBarListLink = styled(motion.ul)`
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-`;

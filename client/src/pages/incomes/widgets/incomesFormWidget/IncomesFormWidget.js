@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled, { css } from "styled-components";
 import { FormProvider, useForm } from "react-hook-form";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
@@ -9,16 +8,21 @@ import {
   Input,
   Dropdown,
   DatePicker,
+  MaskedInput,
 } from "components/base";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ContextField, LabeledField } from "components/hoc";
 import useFormSchema from "./IncomesSchema";
+import { FormContainer, IncomesFormContainer } from "./styled";
+import { useTranslation } from "react-i18next";
 
 const DropdownLabeled = LabeledField(Dropdown);
 const InputLabeled = LabeledField(Input);
 const DatePickerLabeled = LabeledField(DatePicker);
+const MaskedInputLabeled = LabeledField(MaskedInput);
 
 const IncomesFormWidget = () => {
+  const { t } = useTranslation();
   const { budgetStore, categoriesStore } = useContext(Context);
   const { defaultSchema, defaultValues } = useFormSchema();
 
@@ -42,28 +46,29 @@ const IncomesFormWidget = () => {
       <FormProvider {...form}>
         <FormContainer>
           <ContextField
-            component={InputLabeled}
+            component={MaskedInputLabeled}
             name={"income"}
-            label={"Доходы"}
+            maskType={"money"}
+            label={t("label.incomes")}
           />
           <ContextField
             component={DropdownLabeled}
-            label={"Категория"}
+            label={t("label.category")}
             name={"category"}
             option={categoriesStore.optionCategoriesIncome}
           />
           <ContextField
             component={InputLabeled}
             name={"comment"}
-            label={"Комментарий"}
+            label={t("label.comment")}
           />
           <ContextField
             component={DatePickerLabeled}
             name={"creationDate"}
-            label={"Дата"}
+            label={t("label.date")}
           />
           <Button variant={ButtonVariant.PRIMARY} onClick={onSubmitHandler}>
-            Добавить
+            {t("button.add")}
           </Button>
         </FormContainer>
       </FormProvider>
@@ -74,21 +79,3 @@ const IncomesFormWidget = () => {
 IncomesFormWidget.displayName = "IncomesFormWidget";
 
 export default observer(IncomesFormWidget);
-
-const IncomesFormContainer = styled("div")(
-  ({ theme }) => css`
-    width: 50%;
-    background-color: ${theme.color.second};
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-radius: 12px;
-  `
-);
-
-const FormContainer = styled("div")`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-`;

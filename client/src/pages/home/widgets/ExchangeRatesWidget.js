@@ -1,11 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import { IconRuble, IconEuro, IconDollar } from "assets/image/icons/index";
-import HomeWidgetContainer from "../components/HomeWidgetContainer";
+import { Dollar, Euro, Container } from "./styled";
 
 const ExchangeRatesWidget = () => {
   return (
-    <HomeWidgetContainer>
+    <Container>
       <Euro>
         <IconEuro />1 - 130
         <IconRuble />
@@ -14,25 +13,10 @@ const ExchangeRatesWidget = () => {
         <IconDollar />1 - 120
         <IconRuble />
       </Dollar>
-    </HomeWidgetContainer>
+    </Container>
   );
 };
 
 ExchangeRatesWidget.displayName = "ExchangeRatesWidget";
 
 export default ExchangeRatesWidget;
-
-const Euro = styled("div")(
-  () =>
-    css`
-      display: flex;
-      align-items: center;
-    `
-);
-const Dollar = styled("div")(
-  () =>
-    css`
-      display: flex;
-      align-items: center;
-    `
-);

@@ -2,39 +2,46 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Typography, TypographyVariant } from "components/base";
 import { Context } from "root";
+import { useTranslation } from "react-i18next";
 
 const Statistic = () => {
+  const { t } = useTranslation();
   const { budgetStore } = useContext(Context);
   return (
     <>
       <div>
-        <Typography variant={TypographyVariant.h1}>Доходы</Typography>
-        <Typography variant={TypographyVariant.h3}>
-          За день: {budgetStore.incomesPerPeriod.incomesToday}
+        <Typography variant={TypographyVariant.h1}>
+          {t("label.incomes")}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За неделю: {budgetStore.incomesPerPeriod.incomesToWeek}
+          {t("range.per day")}: {budgetStore.incomesPerPeriod.incomesToday}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За месяц: {budgetStore.incomesPerPeriod.incomesToMonth}
+          {t("range.per week")}: {budgetStore.incomesPerPeriod.incomesToWeek}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За год: {budgetStore.incomesPerPeriod.incomesToYear}
+          {t("range.per month")}: {budgetStore.incomesPerPeriod.incomesToMonth}
+        </Typography>
+        <Typography variant={TypographyVariant.h3}>
+          {t("range.per year")}: {budgetStore.incomesPerPeriod.incomesToYear}
         </Typography>
       </div>
       <div>
-        <Typography variant={TypographyVariant.h1}>Расходы</Typography>
-        <Typography variant={TypographyVariant.h3}>
-          За день: {budgetStore.expensesPerPeriod.expensesToday}
+        <Typography variant={TypographyVariant.h1}>
+          {t("label.expenses")}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За неделю: {budgetStore.expensesPerPeriod.expensesToWeek}
+          {t("range.per day")}: {budgetStore.expensesPerPeriod.expensesToday}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За месяц: {budgetStore.expensesPerPeriod.expensesToMonth}
+          {t("range.per week")}: {budgetStore.expensesPerPeriod.expensesToWeek}
         </Typography>
         <Typography variant={TypographyVariant.h3}>
-          За год: {budgetStore.expensesPerPeriod.expensesToYear}
+          {t("range.per month")}:{" "}
+          {budgetStore.expensesPerPeriod.expensesToMonth}
+        </Typography>
+        <Typography variant={TypographyVariant.h3}>
+          {t("range.per year")}: {budgetStore.expensesPerPeriod.expensesToYear}
         </Typography>
       </div>
     </>

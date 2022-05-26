@@ -4,21 +4,23 @@ import { Tab, Tabs } from "components/composite/tabs";
 import Statistic from "./Statistic/Statistic";
 import IncomesTable from "./Tables/IncomesTable";
 import ExpensesTable from "./Tables/ExpensesTable";
+import { useTranslation } from "react-i18next";
 
 const Statistics = () => {
+  const { t } = useTranslation();
   return (
     <MainLayout>
       <Tabs>
-        <Tab label={"Статистика"}>
+        <Tab label={t("pages.statistics")}>
           <Statistic />
         </Tab>
-        <Tab label={"График"}>
+        <Tab label={t("pages.graphs")}>
           <div>График</div>
         </Tab>
-        <Tab label={"Доходы"}>
+        <Tab label={t("pages.incomes")}>
           <IncomesTable />
         </Tab>
-        <Tab label={"Расходы"}>
+        <Tab label={t("pages.expenses")}>
           <ExpensesTable />
         </Tab>
       </Tabs>

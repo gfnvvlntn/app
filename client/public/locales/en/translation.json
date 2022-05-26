@@ -2,16 +2,32 @@
   "label": {
     "email": "Email",
     "password": "Password",
-    "repeat password": "Repeat password"
+    "repeat password": "Repeat password",
+    "expenses": "Expenses",
+    "incomes": "Incomes",
+    "category": "Category",
+    "date": "Date",
+    "comment": "Comment",
+    "categories": "Categories",
+    "add category": "Add category",
+    "action": "Action",
+    "summa": "Summa"
   },
   "button": {
     "sing in": "Sing in",
-    "registration": "Registration"
+    "registration": "Registration",
+    "add expenses": "Add expenses",
+    "add incomes": "Add incomes",
+    "add": "Add"
   },
   "slogan": "Application for entering a personal budget",
   "word": {
     "login": "Login",
-    "registration on the platform": "Registration on the platform"
+    "registration on the platform": "Registration on the platform",
+    "date": "Date",
+    "balance": "Balance",
+    "today's expenses": "Today's expenses",
+    "monthly income": "Monthly income"
   },
   "auth error": {
     "user exists": "User with this email already exists",
@@ -22,5 +38,20 @@
     "enter a valid email": "Enter a valid email",
     "easy password": "Do not enter such a simple password",
     "min length": "Minimum number of characters 6"
+  },
+  "pages": {
+    "pages": "Pages",
+    "main": "Main",
+    "expenses": "Expenses",
+    "incomes": "Incomes",
+    "statistics": "Statistics",
+    "money box": "Money box",
+    "graphs": "Graphs"
+  },
+  "range": {
+    "per day": "Per day",
+    "per week": "Per week",
+    "per month": "Per month",
+    "per year": "Per year"
   }
 }

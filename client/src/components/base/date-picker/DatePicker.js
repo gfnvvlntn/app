@@ -1,10 +1,11 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import DatePicker, { registerLocale } from "react-datepicker";
-import ru from "date-fns/locale/ru";
+import { enUS, ru } from "date-fns/locale";
 import "theme/date-picker.css";
 
-registerLocale("ru", ru);
+const locale = localStorage.getItem("i18nextLng");
+registerLocale(locale, locale === "en" ? enUS : ru);
 
 const DateInput = ({ onChange, value }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -25,7 +26,7 @@ const DateInput = ({ onChange, value }) => {
   ));
   return (
     <DatePicker
-      locale={ru}
+      locale={locale}
       dateFormat="dd.MM.yyyy p"
       timeFormat="HH:mm"
       selected={value ? value : startDate}

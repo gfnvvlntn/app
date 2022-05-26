@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Button, ButtonVariant, Input } from "../../base";
 import { LabeledField } from "../../hoc";
-import styled from "styled-components";
 import { IconPlus } from "assets/image/icons";
 import { Context } from "root";
+import { FormContainer } from "./styled";
+import { useTranslation } from "react-i18next";
 
 const InputLabeled = LabeledField(Input);
 
 const CategoriesForm = ({ type }) => {
+  const { t } = useTranslation();
   const { categoriesStore } = useContext(Context);
 
   const [inputValue, setInputValue] = useState("");
@@ -25,27 +27,19 @@ const CategoriesForm = ({ type }) => {
   };
 
   return (
-    <Container>
+    <FormContainer>
       <InputLabeled
         value={inputValue}
         onChange={changeValue}
-        label={"Добавить котегорию"}
+        label={t("label.add category")}
       />
       <Button onClick={onSubmit} variant={ButtonVariant.ICON}>
         <IconPlus />
       </Button>
-    </Container>
+    </FormContainer>
   );
 };
 
 CategoriesForm.displayName = "CategoriesForm";
 
 export default CategoriesForm;
-
-const Container = styled("div")`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  justify-content: space-between;
-`;

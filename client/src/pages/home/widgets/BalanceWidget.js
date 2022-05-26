@@ -1,53 +1,43 @@
 import React, { useContext } from "react";
-
 import { theme } from "theme/theme";
 import Moment from "react-moment";
-import styled from "styled-components";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import { Typography, TypographyVariant } from "components/base";
-import HomeWidgetContainer from "../components/HomeWidgetContainer";
+import { useTranslation } from "react-i18next";
+import { HomeWidgetBalance, HomeBalanceLine, Container } from "./styled";
 
 const BalanceWidget = () => {
   const { budgetStore } = useContext(Context);
 
+  const { t } = useTranslation();
+
   return (
-    <HomeWidgetContainer>
-      <HomeBalance>
+    <Container>
+      <HomeWidgetBalance>
         <Typography variant={TypographyVariant.h2} color={theme.color.green}>
-          Дата
+          {t("word.date")}
         </Typography>
         <Typography variant={TypographyVariant.h2}>
           <Moment format="DD" className={"time"} />
           <Moment format="MM" className={"time"} />
           <Moment format="YY" className={"time"} />
         </Typography>
-      </HomeBalance>
-      <HomeBalance>
+      </HomeWidgetBalance>
+      <HomeWidgetBalance>
         <Typography variant={TypographyVariant.h2} color={theme.color.green}>
-          Баланс
+          {t("word.balance")}
         </Typography>
         <HomeBalanceLine>
           <Typography variant={TypographyVariant.h1}>
             {budgetStore.balance}
           </Typography>
         </HomeBalanceLine>
-      </HomeBalance>
-    </HomeWidgetContainer>
+      </HomeWidgetBalance>
+    </Container>
   );
 };
 
 BalanceWidget.displayName = "BalanceWidget";
 
 export default observer(BalanceWidget);
-
-const HomeBalance = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const HomeBalanceLine = styled("div")`
-  display: flex;
-  align-items: center;
-`;

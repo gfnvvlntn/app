@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
 import "react-datepicker/dist/react-datepicker.css";
+import MaskedInput from "../../components/base/input/MaskedInput";
 
 const Settings = () => {
   const { settingsStore } = useContext(Context);
@@ -26,6 +27,7 @@ const Settings = () => {
           defaultValue={settingsStore.currency}
           onChange={onChangeCurrency}
         />
+        <MaskedInput />
       </Container>
     </MainLayout>
   );

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import styled, { css } from "styled-components";
 import {
   IconLogin,
   IconLogo,
@@ -14,6 +13,7 @@ import {
 import NavbarLink from "./NavbarLink";
 import { Context } from "root";
 import { useTranslation } from "react-i18next";
+import { NavbarContainer, NavbarGroupLink, NavbarLine } from "./styled";
 
 const Navbar = () => {
   const { authStore } = useContext(Context);
@@ -70,28 +70,3 @@ const Navbar = () => {
 Navbar.displayName = "Navbar";
 
 export default observer(Navbar);
-
-const NavbarContainer = styled("div")(
-  () => css`
-    width: 80px;
-    min-height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-  `
-);
-
-const NavbarGroupLink = styled("div")`
-  display: flex;
-  flex-direction: column;
-  padding: 30px 0;
-  gap: 20px;
-`;
-
-const NavbarLine = styled("div")`
-  width: 100%;
-  height: 1.5px;
-  background-color: white;
-  opacity: 0.7;
-`;

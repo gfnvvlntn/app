@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled, { css } from "styled-components";
 import Table from "components/composite/table/Table";
 import { Context } from "root";
 import {
@@ -9,9 +8,12 @@ import {
   TypographyVariant,
 } from "components/base";
 import Moment from "react-moment";
-import { IconDelete, IconEdit } from "../../../assets/image/icons";
+import { IconDelete, IconEdit } from "assets/image/icons";
+import { useTranslation } from "react-i18next";
+import { ActionGroup, TableContainer, TableHeader } from "./styled";
 
 const ExpensesTable = () => {
+  const { t } = useTranslation();
   const { budgetStore } = useContext(Context);
 
   const onDeleteAction = async (id) => {
@@ -19,15 +21,15 @@ const ExpensesTable = () => {
   };
   let expensesData;
   const expensesTitles = [
-    <ExpensesTableHeader>Сумма</ExpensesTableHeader>,
-    <ExpensesTableHeader>Дата</ExpensesTableHeader>,
-    <ExpensesTableHeader>Категория</ExpensesTableHeader>,
-    <ExpensesTableHeader>Комментарий</ExpensesTableHeader>,
-    <ExpensesTableHeader>Действие</ExpensesTableHeader>,
+    <TableHeader>{t("label.summa")}</TableHeader>,
+    <TableHeader>{t("label.date")}</TableHeader>,
+    <TableHeader>{t("label.category")}</TableHeader>,
+    <TableHeader>{t("label.comment")}</TableHeader>,
+    <TableHeader>{t("label.action")}</TableHeader>,
   ];
   if (budgetStore.expenses) {
     expensesData = budgetStore.expenses.map((data) => ({
-      balance: (
+      summa: (
         <Typography variant={TypographyVariant.h5}>{data.balance}</Typography>
       ),
       date: <Moment format={"DD.MM.YY hh:mm"}>{data.creationDate}</Moment>,
@@ -54,23 +56,16 @@ const ExpensesTable = () => {
   }
 
   return (
-    <ExpensesTableContainer>
+    <TableContainer>
       <Table
         templateColumn={"1fr 1fr 1fr 3fr 1fr"}
         titles={expensesTitles}
         data={expensesData}
       />
-    </ExpensesTableContainer>
+    </TableContainer>
   );
 };
 
 ExpensesTable.displayName = "ExpensesTable";
 
 export default ExpensesTable;
-
-const ExpensesTableContainer = styled("div")(({}) => css``);
-
-const ExpensesTableHeader = styled("div")``;
-const ActionGroup = styled("div")`
-  display: flex;
-`;

@@ -2,16 +2,32 @@
   "label": {
     "email": "Почта",
     "password": "Пароль",
-    "repeat password": "Повторить пароль"
+    "repeat password": "Повторить пароль",
+    "expenses": "Расходы",
+    "incomes": "Доходы",
+    "category": "Категория",
+    "date": "Дата",
+    "comment": "Комментарий",
+    "categories": "Категории",
+    "add category": "Добавить котегорию",
+    "action": "Действие",
+    "summa": "Сумма"
   },
   "button": {
     "sing in": "Войти",
-    "registration": "Регистрация"
+    "registration": "Регистрация",
+    "add expenses": "Добавить расходы",
+    "add incomes": "Добавить доходы",
+    "add": "Добавить"
   },
   "slogan": "Приложение для введения личного бюджета",
   "word": {
     "login": "Вход",
-    "registration on the platform": "Регистрация на платформе"
+    "registration on the platform": "Регистрация на платформе",
+    "date": "Дата",
+    "balance": "Баланс",
+    "today's expenses": "Расходы за сегодня",
+    "monthly income": "Доход за месяц"
   },
   "auth error": {
     "user exists": "Пользователь с таким email уже существует",
@@ -22,5 +38,20 @@
     "enter a valid email": "Введите корректный email",
     "easy password": "Не вводите такой простой пароль",
     "min length": "Минимальное количество символов 6"
+  },
+  "pages": {
+    "pages": "Стрпаницы",
+    "main": "Главная",
+    "expenses": "Расходы",
+    "incomes": "Доходы",
+    "statistics": "Статистика",
+    "money box": "Копилка",
+    "graphs": "Графики"
+  },
+  "range": {
+    "per day": "За день",
+    "per week": "За неделю",
+    "per month": "За месяц",
+    "per year": "За год"
   }
 }

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { theme } from "theme/theme";
-import styled from "styled-components";
 import {
   Button,
   ButtonVariant,
@@ -10,45 +9,35 @@ import {
 } from "components/base";
 import { Context } from "root";
 import { observer } from "mobx-react-lite";
-import HomeWidgetContainer from "../components/HomeWidgetContainer";
+import { useTranslation } from "react-i18next";
+import { HomeBalanceLine, HomeWidgetBalance, Container } from "./styled";
 
 const ExpensesWidget = () => {
   const { budgetStore } = useContext(Context);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
-    <HomeWidgetContainer>
-      <HomeExpensesTitle>
+    <Container>
+      <HomeWidgetBalance>
         <Typography variant={TypographyVariant.h2} color={theme.color.green}>
-          Расходы за сегодня
+          {t("word.today's expenses")}
         </Typography>
         <HomeBalanceLine>
           <Typography variant={TypographyVariant.h1}>
             {budgetStore.expensesPerPeriod.expensesToday}
           </Typography>
         </HomeBalanceLine>
-      </HomeExpensesTitle>
+      </HomeWidgetBalance>
       <Button
         onClick={() => navigate("/expenses")}
         variant={ButtonVariant.SECONDARY}
       >
-        Добавить расходы
+        {t("button.add expenses")}
       </Button>
-    </HomeWidgetContainer>
+    </Container>
   );
 };
 
 ExpensesWidget.displayName = "ExpensesWidget";
 
 export default observer(ExpensesWidget);
-
-
-const HomeExpensesTitle = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const HomeBalanceLine = styled("div")`
-  display: flex;
-  align-items: center;
-`;

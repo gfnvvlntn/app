@@ -1,21 +1,23 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import MainLayout from "components/composite/layouts/MainLayout";
 import ExpensesFormWidget from "./widgets/expensesFormWidget/ExpensesFormWidget";
 import { Tab, Tabs } from "components/composite/tabs";
 import ExpenseCategoriesWidget from "./widgets/expensesCategoriesWidget/ExpenseCategoriesWidget";
+import { useTranslation } from "react-i18next";
+import { ExpensesBody } from "./styled";
 
 const Expenses = () => {
+  const { t } = useTranslation();
   return (
     <MainLayout>
       <Tabs>
-        <Tab label={"Расходы"}>
+        <Tab label={t("pages.expenses")}>
           <ExpensesBody>
             <ExpensesFormWidget />
             <ExpenseCategoriesWidget />
           </ExpensesBody>
         </Tab>
-        <Tab label={"Копилка"}>Копилка</Tab>
+        <Tab label={t("pages.money box")}>{t("pages.money box")}</Tab>
       </Tabs>
     </MainLayout>
   );
@@ -24,10 +26,3 @@ const Expenses = () => {
 Expenses.displayName = "Expenses";
 
 export default Expenses;
-
-const ExpensesBody = styled("div")(
-  () => css`
-    display: flex;
-    gap: 20px;
-  `
-);
