@@ -19,7 +19,7 @@ const Container = styled("div")(
   ({ isOdd, templateColumn, theme }) => css`
     display: grid;
     grid-template-columns: ${templateColumn};
-    background-color: ${!isOdd ? "inherit" : theme.color.main};
+    background-color: ${!isOdd ? theme.color.third : theme.color.four};
     padding: 5px 20px;
     align-items: center;
   `

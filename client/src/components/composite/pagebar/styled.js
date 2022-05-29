@@ -31,7 +31,7 @@ export const PageBarContainer = styled("div")(
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 30px 0;
+    margin: 20px 0;
     border-radius: 12px;
   `
 );

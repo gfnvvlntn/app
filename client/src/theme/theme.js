@@ -2,21 +2,23 @@ import { css } from "styled-components";
 
 export const theme = {
   color: {
-    main: "#1c1c24",
+    main: "#1c1e25",
     second: "#15161b",
     third: "#232429",
-    four: "#202a36",
+    four: "#24262e",
     border: "white",
     red: "#d85050",
-    green: "#598C82",
+    green: "#355b6e",
   },
   font: {
     color: "white",
   },
   button: {
-    primary: "#51b7c3",
-    secondary: "#f9796c",
+    primary: "#4b819c",
+    secondary: "#ff4f42",
   },
+
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);",
 
   typography: {
     h1: css`

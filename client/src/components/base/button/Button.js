@@ -11,7 +11,8 @@ const getBaseStyle = ({ theme }) => {
     border-radius: 666px;
     cursor: pointer;
     border: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: ${theme.boxShadow};
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   `;
 };
 
@@ -23,7 +24,7 @@ const getVariantStyle = ({ theme, variant }) => {
         background-color: ${theme.button.primary};
 
         &:hover {
-          opacity: 0.8;
+          background-color: #406e85;
         }
 
         &:active {
@@ -42,7 +43,7 @@ const getVariantStyle = ({ theme, variant }) => {
         background-color: ${theme.button.secondary};
 
         &:hover {
-          opacity: 0.8;
+          background-color: #ff2f20;
         }
 
         &:active {

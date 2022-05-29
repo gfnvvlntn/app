@@ -30,8 +30,9 @@ const TableContainer = styled("div")(
   ({ theme }) => css`
     display: flex;
     flex-direction: column;
-    background-color: ${theme.color.second};
+    background-color: ${theme.color.third};
     border-radius: 10px;
     overflow: hidden;
+    border: 1px solid ${theme.color.main};
   `
 );

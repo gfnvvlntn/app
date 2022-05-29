@@ -91,7 +91,7 @@ const DropdownContainer = styled("div")(
     position: relative;
     backface-visibility: hidden;
     background-color: ${theme.color.four};
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: ${theme.boxShadow};
   `
 );
 
@@ -122,7 +122,7 @@ const DropdownList = styled("div")(
     z-index: 100;
     top: calc(100% + 5px);
     width: 100%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: ${theme.boxShadow};
 
     &::-webkit-scrollbar {
       /* 1 - скроллбар */

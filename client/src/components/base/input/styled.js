@@ -7,7 +7,7 @@ export const FieldWrapper = styled("div")(
     display: flex;
     border-radius: 0.428571rem;
     background-color: ${theme.color.four};
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: ${theme.boxShadow};
   `
 );
 

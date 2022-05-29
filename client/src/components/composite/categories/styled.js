@@ -11,13 +11,19 @@ export const ListContainer = styled("div")(
 
 export const ItemContainer = styled("div")(
   ({ theme }) => css`
-    background-color: ${theme.color.main};
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0 8px 10px;
-    border-radius: 10px;
-  `
+      background-color: ${theme.color.main};
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 8px 10px;
+      border-radius: 10px;
+      box-shadow: ${theme.boxShadow}
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      &:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      }
+    `
 );
 
 export const FormContainer = styled("div")`

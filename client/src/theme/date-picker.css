@@ -1,7 +1,7 @@
 .react-datepicker {
     font-family: "Montserrat", helvetica, arial, sans-serif !important;
     font-size: 1rem !important;
-    background-color: #202a36 !important;
+    background-color: #355b6e !important;
     color: white !important;
     border: none !important;
     border-radius: 0.428571rem !important;
@@ -12,7 +12,7 @@
 }
 
 .react-datepicker__time-box {
-    background-color: #202a36 !important;
+    background-color: #355b6e !important;
     margin: 0 !important;
     width: 100% !important;
     height: 200px;
@@ -45,7 +45,12 @@ li.react-datepicker__time-list-item:hover {
 
 .react-datepicker-time__header {
     color: white !important;
-    height: 47px !important;
+    height: 0 !important;
+}
+
+.react-datepicker__header--time {
+    height: 0 !important;
+    padding: 0 !important;
 }
 
 .react-datepicker-time__input-container {
@@ -80,7 +85,7 @@ li.react-datepicker__time-list-item:hover {
 
 .react-datepicker__header {
     text-align: center;
-    background-color: #15161b !important;
+    background-color: #24262e !important;
     color: white !important;
     border-bottom: none !important;
     border-top-left-radius: 0.3rem;
